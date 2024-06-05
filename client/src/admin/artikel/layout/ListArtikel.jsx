@@ -1,13 +1,45 @@
-import React from 'react'
-import SearchForm from '@/admin/components/SearchForm';
-import Button from '@/admin/components/Button';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import TableArtikel from '../components/TableArtikel';
-
+import SearchForm from '@/admin/components/SearchForm';
+import { Link } from 'react-router-dom';
+import Button from '@/admin/components/Button';
+import axios from 'axios';
 function ListArtikel() {
+    const [searchKeyword, setSearchKeyword] = useState("");
+    const [data, setData] = useState([]);
 
-    const data = [
-    ];
+    useEffect(() => {
+        fetchData();
+    }, [searchKeyword]);
+
+    const fetchData = () => {
+        axios.get('http://localhost:3001/artikel/search', {
+            params: {
+                keyword: searchKeyword
+            }
+        })
+            .then(res => setData(res.data))
+            .catch(err => { console.log(err); });
+    };
+
+    const handleSearch = (keyword) => {
+        setSearchKeyword(keyword);
+    };
+
+    const handleDelete = (artikelId) => {
+        axios.delete(`http://localhost:3001/artikel/delete/${artikelId}`)
+            .then(() => {
+                fetchData();
+            })
+            .catch(err => console.log(err));
+    };
+
+    const handleAdd = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 3000);
+    };
 
     return (
         <>
@@ -16,24 +48,22 @@ function ListArtikel() {
                     Data Artikel
                 </h1>
                 <div className="flex items-center space-x-5">
-                    {/* <SearchForm placeholder="Masukkan Judul Artikel" /> */}
-                    <Button
-                        classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-green-500 hover:bg-green-600 text-white"
-                        type="search"
-                        name="search">
-                        Cari
-                    </Button>
+                    <SearchForm
+                        placeholder="Masukkan Judul Artikel"
+                        onSearch={handleSearch}
+                    />
                     <Button
                         classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-sky-500 hover:bg-sky-700 text-white"
                         type="add"
-                        name="tambah">
-                        <Link to="/data-kidspedia/add">Tambah</Link>
+                        name="tambah"
+                    >
+                        <Link to="/data-artikel/add">Tambah</Link>
                     </Button>
                 </div>
             </div>
-            <TableArtikel data={data} />
+            <TableArtikel data={data} onDelete={handleDelete} />
         </>
-    )
+    );
 }
 
-export default ListArtikel
+export default ListArtikel;

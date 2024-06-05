@@ -421,3 +421,132 @@ app.delete("/webinar/delete/:id", (req, res) => {
     return res.status(200).json({ message: "Webinar deleted successfully" });
   });
 });
+
+//MENAMPILKAN DATA WEBINAR
+app.get("/artikel", (req, res) => {
+  const sql = "SELECT *, DATE_FORMAT(tanggal, '%Y/%m/%d') AS tanggal FROM artikel";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+// SEARCH ARTIKEL
+app.get("/artikel/search", (req, res) => {
+  const { keyword } = req.query;
+  let sql = "SELECT * FROM artikel";
+  let values = [];
+
+  if (keyword) {
+    sql += " WHERE judul LIKE ?";
+    values.push(`%${keyword}%`);
+  }
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    res.status(200).json(result);
+  });
+});
+
+//ADD ARTIKEL
+app.post("/artikel", upload.single("foto"), (req, res) => {
+  const { judul, author, tanggal, isi } = req.body;
+  let foto = null;
+  if (req.file) {
+    const filename = path.basename(req.file.path);
+    foto = filename;
+  }
+  console.log("Received data:", req.body);
+
+  if (!judul || !author || !tanggal || !isi) {
+    return res.status(400).json({ error: "Please provide judul, author, tanggal and isi" });
+  }
+
+  const sql = `INSERT INTO artikel (judul, foto, author, tanggal, isi, admin_id) VALUES (?, ?, ?, ?, ?, ?)`;
+  const values = [judul, foto, author, tanggal, isi, defaultAdminId];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    return res.status(201).json(result);
+  });
+});
+
+//READ ARTIKEL
+app.get("/artikel/:id", (req, res) => {
+  const artikelId = req.params.id;
+  const sql = `SELECT * FROM artikel WHERE id = ?`;
+
+  db.query(sql, [artikelId], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.length === 0) {
+      return res.status(404).json({ error: "Artikel not found" });
+    }
+    return res.status(200).json(result[0]);
+  });
+});
+
+//UPDATE WEBINAR
+app.put("/artikel/update/:id", upload.single("foto"), (req, res) => {
+  const artikelId = req.params.id;
+  const { judul, author, tanggal, isi } = req.body;
+  let foto = null;
+  if (req.file) {
+    const filename = path.basename(req.file.path);
+    foto = filename;
+  }
+
+  if (!judul || !author || !tanggal || !isi) {
+    return res.status(400).json({ error: "Please provide judul, author, tanggal and isi" });
+  }
+
+  let updateQuery = "";
+  const updateValues = [];
+  if (foto) {
+    updateQuery = "UPDATE artikel SET judul = ?, foto = ?, author = ?, tanggal = ?, isi = ? WHERE id = ?";
+    updateValues.push(judul, foto, author, tanggal, isi, artikelId);
+  } else {
+    updateQuery = "UPDATE artikel SET judul = ?, author = ?, tanggal = ?, isi = ? WHERE id = ?";
+    updateValues.push(judul, author, tanggal, isi, artikelId);
+  }
+
+  db.query(updateQuery, updateValues, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Artikel not found" });
+    }
+    return res.status(200).json(result);
+  });
+});
+
+//DELETE ARTIKEL
+app.delete("/artikel/delete/:id", (req, res) => {
+  const artikelId = req.params.id;
+  const deleteQuery = "DELETE FROM artikel WHERE id = ?";
+
+  db.query(deleteQuery, [artikelId], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Artikel not found" });
+    }
+    return res.status(200).json({ message: "Artikel deleted successfully" });
+  });
+});
