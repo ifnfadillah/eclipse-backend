@@ -276,7 +276,7 @@ app.put("/komunitas/update/:id", upload.single("foto"), (req, res) => {
   });
 });
 
-//DELETE MITRA
+//DELETE KOMUNITAS
 app.delete("/komunitas/delete/:id", (req, res) => {
   const komunitasId = req.params.id;
   const deleteQuery = "DELETE FROM komunitas WHERE id = ?";
@@ -290,5 +290,134 @@ app.delete("/komunitas/delete/:id", (req, res) => {
       return res.status(404).json({ error: "Komunitas not found" });
     }
     return res.status(200).json({ message: "Komunitas deleted successfully" });
+  });
+});
+
+//MENAMPILKAN DATA WEBINAR
+app.get("/webinar", (req, res) => {
+  const sql = "SELECT *, DATE_FORMAT(tanggal, '%Y/%m/%d') AS tanggal FROM webinar";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+// SEARCH WEBINAR
+app.get("/webinar/search", (req, res) => {
+  const { keyword } = req.query;
+  let sql = "SELECT * FROM webinar";
+  let values = [];
+
+  if (keyword) {
+    sql += " WHERE judul LIKE ?";
+    values.push(`%${keyword}%`);
+  }
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    res.status(200).json(result);
+  });
+});
+
+//ADD WEBINAR
+app.post("/webinar", upload.single("foto"), (req, res) => {
+  const { judul, deskripsi, narasumber, tanggal, waktu, harga, link_daftar } = req.body;
+  let foto = null;
+  if (req.file) {
+    const filename = path.basename(req.file.path);
+    foto = filename;
+  }
+  console.log("Received data:", req.body);
+
+  if (!judul || !foto || !deskripsi || !narasumber || !tanggal || !waktu || !harga || !link_daftar) {
+    return res.status(400).json({ error: "Please provide judul, foto, desc, narasumber, tanggal, waktu, harga and link daftar" });
+  }
+
+  const sql = `INSERT INTO webinar (judul, foto, deskripsi, narasumber, tanggal, waktu, harga, link_daftar, admin_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const values = [judul, foto, deskripsi, narasumber, tanggal, waktu, harga, link_daftar, defaultAdminId];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    return res.status(201).json(result);
+  });
+});
+
+//READ WEBINAR
+app.get("/webinar/:id", (req, res) => {
+  const webinarId = req.params.id;
+  const sql = `SELECT * FROM webinar WHERE id = ?`;
+
+  db.query(sql, [webinarId], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.length === 0) {
+      return res.status(404).json({ error: "Webinar not found" });
+    }
+    return res.status(200).json(result[0]);
+  });
+});
+
+//UPDATE WEBINAR
+app.put("/webinar/update/:id", upload.single("foto"), (req, res) => {
+  const webinarId = req.params.id;
+  const { judul, deskripsi, narasumber, tanggal, waktu, harga, link_daftar } = req.body;
+  let foto = null;
+  if (req.file) {
+    const filename = path.basename(req.file.path);
+    foto = filename;
+  }
+
+  if (!judul || !deskripsi || !narasumber || !tanggal || !waktu || !harga || !link_daftar) {
+    return res.status(400).json({ error: "Please provide judul desc, narasumber, tanggal, waktu, harga and link daftar" });
+  }
+
+  let updateQuery = "";
+  const updateValues = [];
+  if (foto) {
+    updateQuery = "UPDATE webinar SET judul = ?, foto = ?, deskripsi = ?, narasumber = ?, tanggal = ?, waktu = ?, harga = ?, link_daftar = ? WHERE id = ?";
+    updateValues.push(judul, foto, deskripsi, narasumber, tanggal, waktu, harga, link_daftar, webinarId);
+  } else {
+    updateQuery = "UPDATE webinar SET judul = ?, deskripsi = ?, narasumber = ?, tanggal = ?, waktu = ?, link_daftar = ? WHERE id = ?";
+    updateValues.push(judul, deskripsi, narasumber, tanggal, waktu, link_daftar, webinarId);
+  }
+
+  db.query(updateQuery, updateValues, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Webinar not found" });
+    }
+    return res.status(200).json(result);
+  });
+});
+
+//DELETE WEBINAR
+app.delete("/webinar/delete/:id", (req, res) => {
+  const webinarId = req.params.id;
+  const deleteQuery = "DELETE FROM webinar WHERE id = ?";
+
+  db.query(deleteQuery, [webinarId], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Webinar not found" });
+    }
+    return res.status(200).json({ message: "Webinar deleted successfully" });
   });
 });

@@ -3,34 +3,30 @@ import Button from '@/admin/components/Button';
 import PopupDelete from '@/admin/components/pop-up/PopupDelete';
 import Pagination from '@/admin/components/Pagination';
 import { Link } from 'react-router-dom';
+import moment from 'moment'
 
-const TableWebinar = ({ data, setData, itemName }) => {
-    // Pop Up Dialog Hapus
+const TableWebinar = ({ data, onDelete }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
 
-    const handleDelete = (index) => {
-        setItemToDelete(index);
+    const handleDelete = (webinarId) => {
+        setItemToDelete(webinarId);
         setIsOpen(true);
     };
 
     const handleConfirm = () => {
         setIsOpen(false);
         if (itemToDelete !== null) {
-            const newData = data.filter((_, index) => index !== itemToDelete);
-            setData(newData);
-            console.log('Item dihapus', newData);
+            onDelete(itemToDelete);
+            setItemToDelete(null);
         }
     };
 
     const handleCancel = () => {
         setIsOpen(false);
     };
-
-    // Pagination
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
-    const totalPages = Math.ceil(data.length / itemsPerPage);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -42,6 +38,8 @@ const TableWebinar = ({ data, setData, itemName }) => {
         return data.slice(startIndex, endIndex);
     };
 
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+
     return (
         <>
             <div className="bg-white relative shadow-sm sm:rounded-lg rounded-lg overflow-hidden">
@@ -50,32 +48,29 @@ const TableWebinar = ({ data, setData, itemName }) => {
                         <thead className="text-sm text-white font-primary font-medium bg-sky-700">
                             <tr>
                                 <th scope="col" className="px-10 py-6 ">No</th>
-                                <th scope="col" className="px-10 py-6 ">Judul Webinar</th>
-                                <th scope="col" className="px-10 py-6 ">Tanggal</th>
-                                <th scope="col" className="px-10 py-6 ">Harga</th>
-                                <th scope="col" className="px-12 py-6 ">
+                                <th scope="col" className="px-8 py-6 ">Judul</th>
+                                <th scope="col" className="px-8 py-6 ">Tanggal</th>
+                                <th scope="col" className="px-8 py-6 ">Harga</th>
+                                <th scope="col" className="px-8 py-6 ">
                                     <span className="sr-only">Action</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             {data.length === 0 ? (
-                                <tr className="">
-                                    <td colSpan={data.length + 1} className="text-center p-6 text-gray-500">Belum ada data</td>
+                                <tr>
+                                    <td colSpan={4} className="text-center p-6 text-gray-500">Tidak ada data yang sesuai</td>
                                 </tr>
                             ) : (
-                                renderData().map((row, index) => (
+                                renderData().map((webinar, index) => (
                                     <tr className="border border-gray-200" key={index}>
-                                        {row.map((cell, cellIndex) => (
-                                            <td
-                                                key={cellIndex}
-                                                className={`font-primary text-xs font-regular text-gray-800 px-12 py-4 max-w-xs truncate ${data[cellIndex].className}`}
-                                            >
-                                                {cell}
-                                            </td>
-                                        ))}
-                                        <td className="px-12  flex items-center justify-end space-x-4">
-                                            <Link key="/data-mitra/delete/">
+                                        <td className="font-primary text-xs font-regular text-gray-800 px-10 py-4 max-w-xs truncate">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
+                                        <td className="font-primary text-xs font-regular text-gray-800 px-8 py-4 max-w-xs truncate">{webinar.judul}</td>
+                                        <td className="font-primary text-xs font-regular text-gray-800 px-8 py-4 max-w-xs truncate">
+                                            {moment(webinar.tanggal).format('DD MMMM YYYY')} </td>
+                                        <td className="font-primary text-xs font-regular text-gray-800 px-8 py-4 max-w-xs truncate">{webinar.harga}</td>
+                                        <td className="px-12 py-3 flex items-center justify-end space-x-4">
+                                            <Link to={`/data-webinar/edit/${webinar.id}`}>
                                                 <Button
                                                     classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-amber-300 hover:bg-amber-400 text-black"
                                                     type="button"
@@ -84,8 +79,8 @@ const TableWebinar = ({ data, setData, itemName }) => {
                                                 </Button>
                                             </Link>
                                             <Button
-                                                onClick={() => handleDelete(index, row[1])}
-                                                classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-700 text-white"
+                                                onClick={() => handleDelete(webinar.id)}
+                                                classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-600 text-white"
                                                 type="button"
                                             >
                                                 Hapus
@@ -111,11 +106,11 @@ const TableWebinar = ({ data, setData, itemName }) => {
                 <PopupDelete
                     onConfirm={handleConfirm}
                     onCancel={handleCancel}
-                    itemName={itemName}
+                    itemName={data.find(webinar => webinar.id === itemToDelete)?.judul}
                 />
             )}
         </>
     );
-};
+}
 
 export default TableWebinar;

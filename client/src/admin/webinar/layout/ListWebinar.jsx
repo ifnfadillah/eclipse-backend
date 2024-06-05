@@ -1,14 +1,45 @@
-import React from 'react'
-import SearchForm from '../../components/SearchForm';
-import Button from '../../components/Button';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import TableWebinar from '../components/TableWebinar';
-
-
+import SearchForm from '@/admin/components/SearchForm';
+import { Link } from 'react-router-dom';
+import Button from '@/admin/components/Button';
+import axios from 'axios';
 function ListWebinar() {
+    const [searchKeyword, setSearchKeyword] = useState("");
+    const [data, setData] = useState([]);
 
-    const data = [
-    ];
+    useEffect(() => {
+        fetchData();
+    }, [searchKeyword]);
+
+    const fetchData = () => {
+        axios.get('http://localhost:3001/webinar/search', {
+            params: {
+                keyword: searchKeyword
+            }
+        })
+            .then(res => setData(res.data))
+            .catch(err => { console.log(err); });
+    };
+
+    const handleSearch = (keyword) => {
+        setSearchKeyword(keyword);
+    };
+
+    const handleDelete = (webinarId) => {
+        axios.delete(`http://localhost:3001/webinar/delete/${webinarId}`)
+            .then(() => {
+                fetchData();
+            })
+            .catch(err => console.log(err));
+    };
+
+    const handleAdd = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 3000);
+    };
 
     return (
         <>
@@ -17,24 +48,22 @@ function ListWebinar() {
                     Data Webinar
                 </h1>
                 <div className="flex items-center space-x-5">
-                    {/* <SearchForm placeholder="Masukkan Judul Webinar" /> */}
-                    <Button
-                        classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-green-500 hover:bg-green-600 text-white"
-                        type="search"
-                        name="search">
-                        Cari
-                    </Button>
+                    <SearchForm
+                        placeholder="Masukkan Judul Webinar"
+                        onSearch={handleSearch}
+                    />
                     <Button
                         classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-sky-500 hover:bg-sky-700 text-white"
                         type="add"
-                        name="tambah">
+                        name="tambah"
+                    >
                         <Link to="/data-webinar/add">Tambah</Link>
                     </Button>
                 </div>
             </div>
-            <TableWebinar data={data} />
+            <TableWebinar data={data} onDelete={handleDelete} />
         </>
-    )
+    );
 }
 
-export default ListWebinar
+export default ListWebinar;
