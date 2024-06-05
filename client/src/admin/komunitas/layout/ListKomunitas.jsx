@@ -1,15 +1,45 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import SearchForm from '@/admin/components/SearchForm';
-import Button from '@/admin/components/Button';
+import React, { useState, useEffect } from 'react';
 import TableKomunitas from '../components/TableKomunitas';
-
-
+import SearchForm from '@/admin/components/SearchForm';
+import { Link } from 'react-router-dom';
+import Button from '@/admin/components/Button';
+import axios from 'axios';
 function ListKomunitas() {
+    const [searchKeyword, setSearchKeyword] = useState("");
+    const [data, setData] = useState([]);
 
-    const data = [
-    ];
+    useEffect(() => {
+        fetchData();
+    }, [searchKeyword]);
 
+    const fetchData = () => {
+        axios.get('http://localhost:3001/komunitas/search', {
+            params: {
+                keyword: searchKeyword
+            }
+        })
+            .then(res => setData(res.data))
+            .catch(err => { console.log(err); });
+    };
+
+    const handleSearch = (keyword) => {
+        setSearchKeyword(keyword);
+    };
+
+    const handleDelete = (komunitasId) => {
+        axios.delete(`http://localhost:3001/komunitas/delete/${komunitasId}`)
+            .then(() => {
+                fetchData();
+            })
+            .catch(err => console.log(err));
+    };
+
+    const handleAdd = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 3000);
+    };
 
     return (
         <>
@@ -18,24 +48,22 @@ function ListKomunitas() {
                     Data Komunitas
                 </h1>
                 <div className="flex items-center space-x-5">
-                    <SearchForm placeholder="Masukkan Nama Komunitas" />
-                    <Button
-                        classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-green-500 hover:bg-green-600 text-white"
-                        type="search"
-                        name="search">
-                        Cari
-                    </Button>
+                    <SearchForm
+                        placeholder="Masukkan Nama Komunitas"
+                        onSearch={handleSearch}
+                    />
                     <Button
                         classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-sky-500 hover:bg-sky-700 text-white"
                         type="add"
-                        name="tambah">
+                        name="tambah"
+                    >
                         <Link to="/data-komunitas/add">Tambah</Link>
                     </Button>
                 </div>
             </div>
-            <TableKomunitas data={data} />
+            <TableKomunitas data={data} onDelete={handleDelete} />
         </>
-    )
+    );
 }
 
-export default ListKomunitas
+export default ListKomunitas;

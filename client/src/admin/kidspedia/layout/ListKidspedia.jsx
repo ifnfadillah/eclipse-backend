@@ -23,13 +23,7 @@ function ListKidspedia() {
                     Data Kidspedia
                 </h1>
                 <div className="flex items-center space-x-5">
-                    <SearchForm placeholder="Masukkan Judul Bahan Belajar" />
-                    <Button
-                        classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-green-500 hover:bg-green-600 text-white"
-                        type="search"
-                        name="search">
-                        Cari
-                    </Button>
+                    {/* <SearchForm placeholder="Masukkan Judul Bahan Belajar" /> */}
                     <Button
                         classname="h-10 px-6 font-secondary text-sm rounded-md font-medium bg-sky-500 hover:bg-sky-700 text-white"
                         type="add"

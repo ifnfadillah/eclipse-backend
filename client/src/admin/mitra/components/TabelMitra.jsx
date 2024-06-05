@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@/admin/components/Button';
 import PopupDelete from '@/admin/components/pop-up/PopupDelete';
 import Pagination from '@/admin/components/Pagination';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
-const TableMitra = ({ itemName }) => {
-    const [data, setData] = useState([]);
+const TableMitra = ({ data, onDelete }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
-
-    useEffect(() => {
-        axios.get('http://localhost:3001/mitra')
-            .then(res => setData(res.data))
-            .catch(err => { console.log(err); });
-    }, []);
 
     const handleDelete = (mitraId) => {
         setItemToDelete(mitraId);
@@ -26,13 +18,8 @@ const TableMitra = ({ itemName }) => {
     const handleConfirm = () => {
         setIsOpen(false);
         if (itemToDelete !== null) {
-            axios.delete(`http://localhost:3001/mitra/delete/${itemToDelete}`)
-                .then(() => {
-                    const newData = data.filter(mitra => mitra.id !== itemToDelete);
-                    setData(newData);
-                    console.log('Item dihapus', newData);
-                })
-                .catch(err => console.log(err));
+            onDelete(itemToDelete);
+            setItemToDelete(null);
         }
     };
 
@@ -70,7 +57,7 @@ const TableMitra = ({ itemName }) => {
                         <tbody>
                             {data.length === 0 ? (
                                 <tr>
-                                    <td colSpan={4} className="text-center p-6 text-gray-500">Belum ada data</td>
+                                    <td colSpan={4} className="text-center p-6 text-gray-500">Tidak ada data yang sesuai</td>
                                 </tr>
                             ) : (
                                 renderData().map((mitra, index) => (
@@ -112,17 +99,14 @@ const TableMitra = ({ itemName }) => {
                 </div>
             )}
             {isOpen && (
-                data.map((mitra, index) => (
-                    <PopupDelete
-                        key={index}
-                        onConfirm={handleConfirm}
-                        onCancel={handleCancel}
-                        itemName={mitra.nama}
-                    />
-                ))
+                <PopupDelete
+                    onConfirm={handleConfirm}
+                    onCancel={handleCancel}
+                    itemName={data.find(mitra => mitra.id === itemToDelete)?.nama}
+                />
             )}
         </>
     );
-};
+}
 
 export default TableMitra;
