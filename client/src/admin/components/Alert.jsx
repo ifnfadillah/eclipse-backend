@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Alert = () => {
+const Alert = ({ message }) => {
     const [visible, setVisible] = useState(true);
 
     const handleClose = () => {
@@ -18,7 +18,7 @@ const Alert = () => {
             </svg>
             <span className="sr-only">Info</span>
             <div className="flex items-center">
-                <span className="font-regular font-primary text-xs">Berhasil menambahkan data</span>
+                <span className="font-regular font-primary text-xs text-green-600">{message}</span>
             </div>
             <button
                 type="button"

@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import TableMitra from '../components/TabelMitra';
 import SearchForm from '@/admin/components/SearchForm';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Button from '@/admin/components/Button';
 import axios from 'axios';
+import Alert from '@/admin/components/Alert';
+
 function ListMitra() {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [data, setData] = useState([]);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+
+    const location = useLocation();
 
     useEffect(() => {
         fetchData();
-    }, [searchKeyword]);
+        if (location.state && location.state.alertMessage) {
+            setAlertMessage(location.state.alertMessage);
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000);
+        }
+    }, [searchKeyword, location.state]);
 
     const fetchData = () => {
         axios.get('http://localhost:3001/mitra/search', {
@@ -26,19 +39,17 @@ function ListMitra() {
         setSearchKeyword(keyword);
     };
 
-    const handleDelete = (mitraId) => {
+    const handleDelete = (mitraId, mitraName) => {
         axios.delete(`http://localhost:3001/mitra/delete/${mitraId}`)
             .then(() => {
                 fetchData();
+                setShowAlert(true);
+                setAlertMessage(`Berhasil menghapus ${mitraName}`);
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 5000);
             })
             .catch(err => console.log(err));
-    };
-
-    const handleAdd = () => {
-        setShowAlert(true);
-        setTimeout(() => {
-            setShowAlert(false);
-        }, 3000);
     };
 
     return (
@@ -61,6 +72,7 @@ function ListMitra() {
                     </Button>
                 </div>
             </div>
+            {showAlert && <Alert message={alertMessage} />}
             <TableMitra data={data} onDelete={handleDelete} />
         </>
     );

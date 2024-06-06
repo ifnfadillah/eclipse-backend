@@ -10,15 +10,15 @@ const TableMitra = ({ data, onDelete }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    const handleDelete = (mitraId) => {
-        setItemToDelete(mitraId);
+    const handleDelete = (mitraId, mitraName) => {
+        setItemToDelete({ id: mitraId, nama: mitraName });
         setIsOpen(true);
     };
 
     const handleConfirm = () => {
         setIsOpen(false);
         if (itemToDelete !== null) {
-            onDelete(itemToDelete);
+            onDelete(itemToDelete.id, itemToDelete.nama);
             setItemToDelete(null);
         }
     };
@@ -75,7 +75,7 @@ const TableMitra = ({ data, onDelete }) => {
                                                 </Button>
                                             </Link>
                                             <Button
-                                                onClick={() => handleDelete(mitra.id)}
+                                                onClick={() => handleDelete(mitra.id, mitra.nama)}
                                                 classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-600 text-white"
                                                 type="button"
                                             >
@@ -102,7 +102,7 @@ const TableMitra = ({ data, onDelete }) => {
                 <PopupDelete
                     onConfirm={handleConfirm}
                     onCancel={handleCancel}
-                    itemName={data.find(mitra => mitra.id === itemToDelete)?.nama}
+                    itemName={data.find(mitra => mitra.id === itemToDelete?.id)?.nama}
                 />
             )}
         </>
