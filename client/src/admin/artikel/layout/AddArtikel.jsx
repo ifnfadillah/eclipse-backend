@@ -33,7 +33,7 @@ function AddArtikel() {
         })
             .then(res => {
                 console.log('Response:', res);
-                navigate('/data-artikel');
+                navigate('/data-artikel', { state: { alertMessage: `Berhasil menambahkan ${values.judul}` } });
             })
             .catch(err => {
                 console.error('Error:', err.response ? err.response.data : err.message);

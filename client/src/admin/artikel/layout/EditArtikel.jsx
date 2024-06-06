@@ -44,7 +44,7 @@ function EditArtikel() {
         axios.put(`http://localhost:3001/artikel/update/${id}`, formData)
             .then(res => {
                 console.log('Update success:', res);
-                navigate('/data-artikel');
+                navigate('/data-artikel', { state: { alertMessage: `Berhasil mengubah ${values.judul}` } });
             })
             .catch(err => {
                 console.error('Update error:', err.response ? err.response.data : err.message);
