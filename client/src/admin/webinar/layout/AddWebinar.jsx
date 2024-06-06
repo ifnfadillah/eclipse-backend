@@ -40,7 +40,7 @@ function AddWebinar() {
         })
             .then(res => {
                 console.log('Response:', res);
-                navigate('/data-webinar');
+                navigate('/data-webinar', { state: { alertMessage: `Berhasil menambahkan ${values.judul}` } });
             })
             .catch(err => {
                 console.error('Error:', err.response ? err.response.data : err.message);

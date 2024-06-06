@@ -11,15 +11,14 @@ const TableWebinar = ({ data, onDelete }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    const handleDelete = (webinarId) => {
-        setItemToDelete(webinarId);
+    const handleDelete = (webinarId, webinarJudul) => {
+        setItemToDelete({ id: webinarId, judul: webinarJudul });
         setIsOpen(true);
     };
-
     const handleConfirm = () => {
         setIsOpen(false);
         if (itemToDelete !== null) {
-            onDelete(itemToDelete);
+            onDelete(itemToDelete.id, itemToDelete.judul);
             setItemToDelete(null);
         }
     };
@@ -79,7 +78,7 @@ const TableWebinar = ({ data, onDelete }) => {
                                                 </Button>
                                             </Link>
                                             <Button
-                                                onClick={() => handleDelete(webinar.id)}
+                                                onClick={() => handleDelete(webinar.id, webinar.judul)}
                                                 classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-600 text-white"
                                                 type="button"
                                             >
@@ -106,7 +105,7 @@ const TableWebinar = ({ data, onDelete }) => {
                 <PopupDelete
                     onConfirm={handleConfirm}
                     onCancel={handleCancel}
-                    itemName={data.find(webinar => webinar.id === itemToDelete)?.judul}
+                    itemName={data.find(webinar => webinar.id === itemToDelete?.id)?.judul}
                 />
             )}
         </>

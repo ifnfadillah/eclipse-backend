@@ -52,7 +52,7 @@ function EditWebinar() {
         axios.put(`http://localhost:3001/webinar/update/${id}`, formData)
             .then(res => {
                 console.log('Update success:', res);
-                navigate('/data-webinar');
+                navigate('/data-webinar', { state: { alertMessage: `Berhasil mengubah ${values.judul}` } });
             })
             .catch(err => {
                 console.error('Update error:', err.response ? err.response.data : err.message);
