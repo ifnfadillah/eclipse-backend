@@ -43,7 +43,7 @@ function EditKomunitas() {
         axios.put(`http://localhost:3001/komunitas/update/${id}`, formData)
             .then(res => {
                 console.log('Update success:', res);
-                navigate('/data-komunitas');
+                navigate('/data-komunitas', { state: { alertMessage: `Berhasil mengubah ${values.nama}` } });
             })
             .catch(err => {
                 console.error('Update error:', err.response ? err.response.data : err.message);

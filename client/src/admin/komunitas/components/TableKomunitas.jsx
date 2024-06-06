@@ -10,18 +10,19 @@ const TableKomunitas = ({ data, onDelete }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    const handleDelete = (komunitasId) => {
-        setItemToDelete(komunitasId);
+    const handleDelete = (komunitasId, komunitasName) => {
+        setItemToDelete({ id: komunitasId, nama: komunitasName });
         setIsOpen(true);
     };
 
     const handleConfirm = () => {
         setIsOpen(false);
         if (itemToDelete !== null) {
-            onDelete(itemToDelete);
+            onDelete(itemToDelete.id, itemToDelete.nama);
             setItemToDelete(null);
         }
     };
+
 
     const handleCancel = () => {
         setIsOpen(false);
@@ -75,7 +76,7 @@ const TableKomunitas = ({ data, onDelete }) => {
                                                 </Button>
                                             </Link>
                                             <Button
-                                                onClick={() => handleDelete(komunitas.id)}
+                                                onClick={() => handleDelete(komunitas.id, komunitas.nama)}
                                                 classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-600 text-white"
                                                 type="button"
                                             >
@@ -102,7 +103,7 @@ const TableKomunitas = ({ data, onDelete }) => {
                 <PopupDelete
                     onConfirm={handleConfirm}
                     onCancel={handleCancel}
-                    itemName={data.find(komunitas => komunitas.id === itemToDelete)?.nama}
+                    itemName={data.find(komunitas => komunitas.id === itemToDelete?.id)?.nama}
                 />
             )}
         </>

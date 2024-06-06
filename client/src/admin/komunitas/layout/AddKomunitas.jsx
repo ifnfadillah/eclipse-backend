@@ -31,7 +31,7 @@ function AddKomunitas() {
         })
             .then(res => {
                 console.log('Response:', res);
-                navigate('/data-komunitas');
+                navigate('/data-komunitas', { state: { alertMessage: `Berhasil menambahkan ${values.nama}` } });
             })
             .catch(err => {
                 console.error('Error:', err.response ? err.response.data : err.message);
