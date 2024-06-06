@@ -29,7 +29,7 @@ function AddMitra() {
         })
             .then(res => {
                 console.log('Response:', res);
-                navigate('/data-mitra', { state: { alertMessage: `Berhasil menambahkan data ${values.nama}` } });
+                navigate('/data-mitra', { state: { alertMessage: `Berhasil menambahkan ${values.nama}` } });
             })
             .catch(err => {
                 console.error('Error:', err.response ? err.response.data : err.message);

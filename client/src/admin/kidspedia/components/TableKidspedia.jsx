@@ -4,22 +4,20 @@ import PopupDelete from '@/admin/components/pop-up/PopupDelete';
 import Pagination from '@/admin/components/Pagination';
 import { Link } from 'react-router-dom';
 
-
 const TableKidspedia = ({ data, onDelete }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    const handleDelete = (kidspediaId) => {
-        setItemToDelete(kidspediaId);
+    const handleDelete = (kidspediaId, kidspediaJudul) => {
+        setItemToDelete({ id: kidspediaId, judul: kidspediaJudul });
         setIsOpen(true);
     };
-
     const handleConfirm = () => {
         setIsOpen(false);
         if (itemToDelete !== null) {
-            onDelete(itemToDelete);
+            onDelete(itemToDelete.id, itemToDelete.judul);
             setItemToDelete(null);
         }
     };
@@ -78,7 +76,7 @@ const TableKidspedia = ({ data, onDelete }) => {
                                                 </Button>
                                             </Link>
                                             <Button
-                                                onClick={() => handleDelete(kidspedia.id)}
+                                                onClick={() => handleDelete(kidspedia.id, kidspedia.judul)}
                                                 classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-600 text-white"
                                                 type="button"
                                             >
@@ -105,7 +103,7 @@ const TableKidspedia = ({ data, onDelete }) => {
                 <PopupDelete
                     onConfirm={handleConfirm}
                     onCancel={handleCancel}
-                    itemName={data.find(kidspedia => kidspedia.id === itemToDelete)?.judul}
+                    itemName={data.find(kidspedia => kidspedia.id === itemToDelete?.id)?.judul}
                 />
             )}
         </>

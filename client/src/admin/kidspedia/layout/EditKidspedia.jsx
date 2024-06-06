@@ -44,7 +44,7 @@ function EditKidspedia() {
         axios.put(`http://localhost:3001/kidspedia/update/${id}`, formData)
             .then(res => {
                 console.log('Update success:', res);
-                navigate('/data-kidspedia');
+                navigate('/data-kidspedia', { state: { alertMessage: `Berhasil mengubah ${values.judul}` } });
             })
             .catch(err => {
                 console.error('Update error:', err.response ? err.response.data : err.message);

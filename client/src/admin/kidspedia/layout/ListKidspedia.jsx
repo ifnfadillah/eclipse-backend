@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import TableKidspedia from '../components/TableKidspedia';
 import SearchForm from '@/admin/components/SearchForm';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Button from '@/admin/components/Button';
 import axios from 'axios';
+import Alert from '@/admin/components/Alert';
+
 function ListKidspedia() {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [data, setData] = useState([]);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+
+    const location = useLocation();
 
     useEffect(() => {
         fetchData();
-    }, [searchKeyword]);
+        if (location.state && location.state.alertMessage) {
+            setAlertMessage(location.state.alertMessage);
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000);
+        }
+    }, [searchKeyword, location.state]);
 
     const fetchData = () => {
         axios.get('http://localhost:3001/kidspedia/', {
@@ -28,19 +41,17 @@ function ListKidspedia() {
         setSearchKeyword(keyword);
     };
 
-    const handleDelete = (kidspediaId) => {
+    const handleDelete = (kidspediaId, kidspediaJudul) => {
         axios.delete(`http://localhost:3001/kidspedia/delete/${kidspediaId}`)
             .then(() => {
                 fetchData();
+                setShowAlert(true);
+                setAlertMessage(`Berhasil menghapus ${kidspediaJudul}`);
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 5000);
             })
             .catch(err => console.log(err));
-    };
-
-    const handleAdd = () => {
-        setShowAlert(true);
-        setTimeout(() => {
-            setShowAlert(false);
-        }, 3000);
     };
 
     return (
@@ -63,6 +74,7 @@ function ListKidspedia() {
                     </Button>
                 </div>
             </div>
+            {showAlert && <Alert message={alertMessage} />}
             <TableKidspedia data={data} onDelete={handleDelete} />
         </>
     );

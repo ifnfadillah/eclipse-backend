@@ -42,7 +42,7 @@ function EditMitra() {
         axios.put(`http://localhost:3001/mitra/update/${id}`, formData)
             .then(res => {
                 console.log('Update success:', res);
-                navigate('/data-mitra', { state: { alertMessage: `Berhasil mengubah data ${values.nama}` } });
+                navigate('/data-mitra', { state: { alertMessage: `Berhasil mengubah ${values.nama}` } });
             })
             .catch(err => {
                 console.error('Update error:', err.response ? err.response.data : err.message);
