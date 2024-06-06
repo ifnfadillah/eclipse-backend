@@ -550,3 +550,134 @@ app.delete("/artikel/delete/:id", (req, res) => {
     return res.status(200).json({ message: "Artikel deleted successfully" });
   });
 });
+
+//MENAMPILKAN DATA KIDSPEDIA
+app.get("/kidspedia", (req, res) => {
+  const sql = "SELECT kidspedia.*, kategori_kidspedia.nama AS kategori_nama FROM kidspedia INNER JOIN kategori_kidspedia ON kidspedia.kategori_id = kategori_kidspedia.id";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+// SEARCH KIDSPEDIA
+app.get("/kidspedia/search", (req, res) => {
+  const { keyword } = req.query;
+  let sql = "SELECT kidspedia.*, kategori_kidspedia.nama AS kategori_nama FROM kidspedia INNER JOIN kategori_kidspedia ON kidspedia.kategori_id = kategori_kidspedia.id";
+  let values = [];
+
+  if (keyword) {
+    sql += " WHERE judul LIKE ?";
+    values.push(`%${keyword}%`);
+  }
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    res.status(200).json(result);
+  });
+});
+
+//ADD KIDSPEDIA
+app.post("/kidspedia", upload.single("foto"), (req, res) => {
+  const { kategori_id, judul, link } = req.body;
+  let foto = null;
+  if (req.file) {
+    const filename = path.basename(req.file.path);
+    foto = filename;
+  }
+  console.log("Received data:", req.body);
+
+  if (!kategori_id || !judul || !foto || !link) {
+    return res.status(400).send("All fields are required");
+  }
+  const sql = `INSERT INTO kidspedia (kategori_id, judul, foto, link, admin_id) VALUES (?, ?, ?, ?, ?)`;
+  const values = [kategori_id, judul, foto, link, defaultAdminId];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    return res.status(201).json(result);
+  });
+});
+
+//READ KIDSPEDIA
+app.get("/kidspedia/:id", (req, res) => {
+  const kidspediaId = req.params.id;
+  const sql = `SELECT kidspedia.*, kategori_kidspedia.nama AS kategori_nama 
+               FROM kidspedia 
+               INNER JOIN kategori_kidspedia ON kidspedia.kategori_id = kategori_kidspedia.id 
+               WHERE kidspedia.id = ?`;
+
+  db.query(sql, [kidspediaId], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.length === 0) {
+      return res.status(404).json({ error: "Kidspedia not found" });
+    }
+    return res.status(200).json(result[0]);
+  });
+});
+
+//UPDATE KIDSPEDIA
+app.put("/kidspedia/update/:id", upload.single("foto"), (req, res) => {
+  const kidspediaId = req.params.id;
+  const { judul, kategori_id, link } = req.body;
+  let foto = null;
+  if (req.file) {
+    const filename = path.basename(req.file.path);
+    foto = filename;
+  }
+
+  if (!judul || !kategori_id || !link) {
+    return res.status(400).json({ error: "Please provide all required fields" });
+  }
+
+  let updateQuery = "";
+  const updateValues = [];
+  if (foto) {
+    updateQuery = "UPDATE kidspedia SET judul = ?, foto = ?, kategori_id = ?, link = ? WHERE id = ?";
+    updateValues.push(judul, foto, kategori_id, link, kidspediaId);
+  } else {
+    updateQuery = "UPDATE kidspedia SET judul = ?, kategori_id = ?, link = ? WHERE id = ?";
+    updateValues.push(judul, kategori_id, link, kidspediaId);
+  }
+
+  db.query(updateQuery, updateValues, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Kidspedia not found" });
+    }
+    return res.status(200).json(result);
+  });
+});
+
+//DELETE ARTIKEL
+app.delete("/kidspedia/delete/:id", (req, res) => {
+  const kidspediaId = req.params.id;
+  const deleteQuery = "DELETE FROM kidspedia WHERE id = ?";
+
+  db.query(deleteQuery, [kidspediaId], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json(err);
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Kidspedia not found" });
+    }
+    return res.status(200).json({ message: "Kidspedia deleted successfully" });
+  });
+});

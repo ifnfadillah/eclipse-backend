@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InputDropdown = (props) => {
-    const { name, options, text } = props;
+    const { name, options, text, value, onChange } = props;
 
     return (
         <div className="col-span-2 md:col-span-6">
@@ -14,6 +14,8 @@ const InputDropdown = (props) => {
                 name={name}
                 className="bg-white border border-gray-700 text-gray-800 text-xs font-primary font-regular rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3.5 px-4 placeholder:text-xs"
                 id={name}
+                onChange={onChange}
+                value={value}
                 required
             >
                 <option value="">Pilih kategori Bahan Belajar</option>

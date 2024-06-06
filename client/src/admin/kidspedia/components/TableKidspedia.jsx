@@ -4,33 +4,29 @@ import PopupDelete from '@/admin/components/pop-up/PopupDelete';
 import Pagination from '@/admin/components/Pagination';
 import { Link } from 'react-router-dom';
 
-const TableKidspedia = ({ data, setData, itemName }) => {
-    // Pop Up Dialog Hapus
+
+const TableKidspedia = ({ data, onDelete }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
 
-    const handleDelete = (index) => {
-        setItemToDelete(index);
+    const handleDelete = (kidspediaId) => {
+        setItemToDelete(kidspediaId);
         setIsOpen(true);
     };
 
     const handleConfirm = () => {
         setIsOpen(false);
         if (itemToDelete !== null) {
-            const newData = data.filter((_, index) => index !== itemToDelete);
-            setData(newData);
-            console.log('Item dihapus', newData);
+            onDelete(itemToDelete);
+            setItemToDelete(null);
         }
     };
 
     const handleCancel = () => {
         setIsOpen(false);
     };
-
-    // Pagination
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
-    const totalPages = Math.ceil(data.length / itemsPerPage);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -42,6 +38,8 @@ const TableKidspedia = ({ data, setData, itemName }) => {
         return data.slice(startIndex, endIndex);
     };
 
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+
     return (
         <>
             <div className="bg-white relative shadow-sm sm:rounded-lg rounded-lg overflow-hidden">
@@ -49,32 +47,29 @@ const TableKidspedia = ({ data, setData, itemName }) => {
                     <table className="w-full text-sm text-left text-gray-500">
                         <thead className="text-sm text-white font-primary font-medium bg-sky-700">
                             <tr>
-                                <th scope="col" className="px-10 lg:py-6 py-3">No</th>
-                                <th scope="col" className="px-12 lg:py-6 py-3">Judul Bahan Belajar</th>
-                                <th scope="col" className="px-12 lg:py-6 py-3">Kategori</th>
-                                <th scope="col" className="px-12 lg:py-6 py-3">
+                                <th scope="col" className="px-10 py-6 ">No</th>
+                                <th scope="col" className="px-12 py-6 ">Judul Bahan Belajar</th>
+                                <th scope="col" className="px-12 py-6 ">Kategori</th>
+                                <th scope="col" className="px-12 py-6 ">
                                     <span className="sr-only">Action</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             {data.length === 0 ? (
-                                <tr className="">
-                                    <td colSpan={data.length + 1} className="text-center p-6 text-gray-500">Belum ada data</td>
+                                <tr>
+                                    <td colSpan={4} className="text-center p-6 text-gray-500">Tidak ada data yang sesuai</td>
                                 </tr>
                             ) : (
-                                renderData().map((row, index) => (
+                                renderData().map((kidspedia, index) => (
                                     <tr className="border border-gray-200" key={index}>
-                                        {row.map((cell, cellIndex) => (
-                                            <td
-                                                key={cellIndex}
-                                                className={`font-primary text-xs font-regular text-gray-800 px-12 py-4 max-w-xs truncate ${data[cellIndex].className}`}
-                                            >
-                                                {cell}
-                                            </td>
-                                        ))}
+                                        <td className="font-primary text-xs font-regular text-gray-800 px-10 py-4 max-w-xs truncate">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
+                                        <td className="font-primary text-xs font-regular text-gray-800 px-12 py-4 max-w-xs truncate">{kidspedia.judul}</td>
+                                        <td className="font-primary text-xs font-regular text-gray-800 px-12 py-4 max-w-xs truncate">
+                                            {kidspedia.kategori_nama}
+                                        </td>
                                         <td className="px-12 py-3 flex items-center justify-end space-x-4">
-                                            <Link key="/data-mitra/delete/">
+                                            <Link to={`/data-kidspedia/edit/${kidspedia.id}`}>
                                                 <Button
                                                     classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-amber-300 hover:bg-amber-400 text-black"
                                                     type="button"
@@ -83,8 +78,8 @@ const TableKidspedia = ({ data, setData, itemName }) => {
                                                 </Button>
                                             </Link>
                                             <Button
-                                                onClick={() => handleDelete(index, row[1])}
-                                                classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-700 text-white"
+                                                onClick={() => handleDelete(kidspedia.id)}
+                                                classname="h-9 w-20 font-secondary text-xs rounded-3xl font-medium bg-red-500 hover:bg-red-600 text-white"
                                                 type="button"
                                             >
                                                 Hapus
@@ -110,11 +105,11 @@ const TableKidspedia = ({ data, setData, itemName }) => {
                 <PopupDelete
                     onConfirm={handleConfirm}
                     onCancel={handleCancel}
-                    itemName={itemName}
+                    itemName={data.find(kidspedia => kidspedia.id === itemToDelete)?.judul}
                 />
             )}
         </>
     );
-};
+}
 
 export default TableKidspedia;
