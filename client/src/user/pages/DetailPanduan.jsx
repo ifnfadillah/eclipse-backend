@@ -57,7 +57,7 @@ const DetailPanduan = () => {
         </SectionGizi>
         <SectionParaAhli desk={pola.expertAdvice} nama={pola.ahli} pekerjaan={pola.pekerjaan} imgUrl={pola.imageAhli} />
 
-        <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16">
+        <div className="py-8 mx-auto max-w-screen-xl sm:py-16">
           <div className="mx-auto text-center mb-16">
             <div className="flex items-center justify-between mb-4">
               <Judul className="text-left">
@@ -68,10 +68,10 @@ const DetailPanduan = () => {
               </ButtonCTA2>
             </div>
             <div className="flex items-center justify-center">
-              <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-5 md:space-y-0">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-4">
                 {otherPolas.map((pola) => (
                   <Link key={pola.id} to={`/edukasi/panduan-asuh/${pola.id}`}>
-                    <CardCategory title={pola.title} imageUrl={pola.imageCard} />
+                    <CardCategory title={pola.title} imageUrl={pola.imageCard} className="mx-2" />
                   </Link>
                 ))}
               </div>

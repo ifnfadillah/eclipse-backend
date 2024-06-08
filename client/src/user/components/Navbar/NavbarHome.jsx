@@ -34,7 +34,7 @@ const NavbarHome = () => {
   const isEdukasiActive = location.pathname.startsWith("/edukasi");
 
   return (
-    <nav className={`bg-gradient-to-t from-sky-900 to-sky-600 sticky top-4 md:mx-24 mx-8 border-blue-200 dark:border-gray-600 dark:bg-gray-900 ${isDropdownOpen ? "rounded-3xl" : "rounded-full"} shadow-lg z-50`}>
+    <nav className={`bg-gradient-to-t from-sky-900 to-sky-600 sticky top-4 lg:mx-24 mx-8 border-blue-200 dark:border-gray-600 dark:bg-gray-900 ${isDropdownOpen ? "rounded-3xl" : "rounded-full"} shadow-lg z-50`}>
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl py-5 px-12">
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/assets/icon.png" className="h-12" alt="parentify-logo" />
@@ -43,7 +43,7 @@ const NavbarHome = () => {
         <button
           onClick={toggleDropdown}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg lg:hidden hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-200"
           aria-controls="mega-menu-full"
           aria-expanded={isDropdownOpen}
         >
@@ -52,7 +52,7 @@ const NavbarHome = () => {
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
           </svg>
         </button>
-        <div id="mega-menu-full" className={`items-center justify-between ${isDropdownOpen ? "block" : "hidden"} w-full md:flex md:w-auto md:order-1`}>
+        <div id="mega-menu-full" className={`items-center justify-between ${isDropdownOpen ? "block" : "hidden"} w-full lg:flex lg:w-auto lg:order-1`}>
           <ul className="flex flex-col mt-4 text-xl font-medium md:flex-row md:mt-0 md:space-x-16 rtl:space-x-reverse">
             <li>
               <Link
