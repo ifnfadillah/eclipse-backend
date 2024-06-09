@@ -62,8 +62,9 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/"
-                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isActiveLink("/") ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
-                  }`}
+                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
+                  isActiveLink("/") ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
+                }`}
                 aria-current="page"
               >
                 Beranda
@@ -74,8 +75,9 @@ const NavbarHome = () => {
                 id="mega-menu-full-dropdown-button"
                 onClick={toggleDropdown}
                 data-collapse-toggle="mega-menu-full-dropdown"
-                className={`flex items-center justify-between w-full px-3 py-3 lg:py-2 font-medium border-b border-gray-100 md:w-auto md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isEdukasiActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
-                  }`}
+                className={`flex items-center justify-between w-full px-3 py-3 lg:py-2 font-medium border-b border-gray-100 md:w-auto md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
+                  isEdukasiActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
+                }`}
               >
                 Edukasi{" "}
                 <svg className={`w-2.5 h-2.5 ms-3 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : "rotate-0"}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -83,7 +85,11 @@ const NavbarHome = () => {
                 </svg>
               </button>
               {isEdukasiDropdownOpen && (
-                <div ref={dropdownRef} id="mega-menu-full-dropdown" className={`mt-5 shadow-sm rounded-b-3xl lg:hidden space-y-4 dark:bg-gray-900 transition-all duration-300 ${isDropdownOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}>
+                <div
+                  ref={dropdownRef}
+                  id="mega-menu-full-dropdown"
+                  className={`mt-5 shadow-sm rounded-b-3xl lg:hidden space-y-4 dark:bg-gray-900 transition-all duration-300 ${isDropdownOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}
+                >
                   <ul aria-labelledby="mega-menu-full-dropdown-button">
                     <li>
                       <Link to="/edukasi/panduan-asuh" className="flex flex-col items-center md:flex-row text-sky-200 hover:text-sky-300">
@@ -129,8 +135,9 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/kidspedia"
-                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isKidspediaActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
-                  }`}
+                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
+                  isKidspediaActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
+                }`}
               >
                 Kidspedia
               </Link>
@@ -138,8 +145,9 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/sharenting"
-                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isSharentingActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
-                  }`}
+                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
+                  isSharentingActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
+                }`}
               >
                 Sharenting
               </Link>
@@ -147,8 +155,9 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/artikel"
-                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isArtikelActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
-                  }`}
+                className={`block py-3 lg:py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
+                  isArtikelActive ? "text-gray-50 lg:underline lg:underline-offset-8 lg:underline-mb-4 decoration-2 decoration-white" : "text-sky-200 hover:text-sky-300"
+                }`}
               >
                 Artikel
               </Link>
@@ -156,7 +165,11 @@ const NavbarHome = () => {
           </ul>
         </div>
       </div>
-      <div ref={dropdownRef} id="mega-menu-full-dropdown" className={`mt-1 shadow-sm rounded-b-3xl hidden lg:block  dark:bg-gray-900 transition-all duration-300 ${isDropdownOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
+      <div
+        ref={dropdownRef}
+        id="mega-menu-full-dropdown"
+        className={`mt-1 shadow-sm rounded-b-3xl hidden lg:block  dark:bg-gray-900 transition-all duration-300 ${isDropdownOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}
+      >
         <div className="grid max-w-screen-xl px-10 lg:py-8 mx-auto dark:textWhite sm:grid-cols-2 md:grid-cols-3 lg:px-6 space-y-4 lg:space-y-0">
           <ul aria-labelledby="mega-menu-full-dropdown-button">
             <li>
