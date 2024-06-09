@@ -4,7 +4,7 @@ const CardVideo = ({ imageUrl, title, link }) => {
       <div className="max-w-full relative border-gray-200 rounded-lg shadow-2xl hover:shadow-xl mx-auto">
         <img className="w-full h-40 object-cover md:h-32 lg:h-48 rounded-t-lg" src={imageUrl} alt={title} />
         <div className="p-4 bg-sky-700 text-white text-left mx-auto hover:bg-sky-500 rounded-b-lg">
-          <a href={link}>
+          <a href={link} target="_blank" rel="noopener noreferrer">
             <h5 className="py-2 text-base md:text-xl font-semibold font-primary tracking-tight text-white">{title}</h5>
           </a>
         </div>

@@ -28,7 +28,7 @@ const SectionVideo = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-8 ">
         {renderData().map((video) => (
-          <Link key={video.id} to={video.link} target="_blank" rel="noopener noreferrer" className="flex items-center px-2">
+          <Link key={video.id} to={video.link} className="flex items-center px-2">
             <CardVideo imageUrl={video.imageCard} title={video.title} link={video.link} />
           </Link>
         ))}
