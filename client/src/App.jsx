@@ -22,8 +22,8 @@ import EditArtikel from "./admin/artikel/layout/EditArtikel";
 
 // user
 import HomeUser from "./user/pages/HomeUser";
-import Kidspedia from "./user/pages/kidspedia";
-import Sharenting from "./user/pages/sharenting";
+import Kidspedia from "./user/pages/Kidspedia";
+import Sharenting from "./user/pages/Sharenting";
 import Webinar from "./user/pages/listWebinar";
 import PanduanAsuh from "./user/pages/panduanasuh";
 import Komunitas from "./user/pages/listKomunitas";
