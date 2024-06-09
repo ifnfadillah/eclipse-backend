@@ -26,11 +26,11 @@ import Kidspedia from "./user/pages/Kidspedia";
 import Sharenting from "./user/pages/Sharenting";
 import Webinar from "./user/pages/listWebinar";
 import PanduanAsuh from "./user/pages/panduanasuh";
-import ListArticle from "./user/pages/listArtikel";
+import ListArticle from "./user/pages/Artikel";
 import Komunitas from "./user/pages/listKomunitas";
 import DetailKomunitas from "./user/pages/DetailKomunitas";
 import DetailWebinar from "./user/pages/DetailWebinar";
-import Artikel from "./user/pages/artikel";
+import Artikel from "./user/pages/Artikel";
 import HasilQuiz from "./user/pages/hasilquiz";
 import Quiz from "./user/pages/quiz";
 import GayaParenting from "./user/pages/gayaparenting";
@@ -39,6 +39,7 @@ import DetailPanduan from "./user/pages/DetailPanduan";
 import DetailGaya from "./user/pages/DetailGaya";
 import ListVideoBelajar from "./user/pages/listVideoBelajar";
 import ListMewarnai from "./user/pages/listMewarnai";
+import DetailArtikel from "./user/pages/DetailArtikel";
 
 const ProtectedRoute = ({ element }) => {
   const token = localStorage.getItem("token");
@@ -55,8 +56,8 @@ function App() {
       <Route path="/sharenting-webinar/:id" element={<DetailWebinar />} />
       <Route path="/sharenting-komunitas" element={<Komunitas />} />
       <Route path="/sharenting-komunitas/:id" element={<DetailKomunitas />} />
-      <Route path="/artikel-list" element={<ListArticle />} />
-      <Route path="/artikel/:id" element={<Artikel />} />
+      <Route path="/artikel" element={<Artikel />} />
+      <Route path="/artikel/:id" element={<DetailArtikel />} />
       <Route path="/edukasi/gaya-parenting" element={<GayaParenting />} />
       <Route path="/edukasi/kenali-gaya" element={<KenaliGaya />} />
       <Route path="/edukasi/kenali-gaya/quiz" element={<Quiz />} />

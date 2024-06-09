@@ -145,8 +145,8 @@ function ArtikelList() {
   };
 
   return (
-    <div className="container py-8 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-      <div className="mb-10 text-center sm:text-left">
+    <div className="py-16 md:py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div className="mx-auto max-w-screen-lg text-center mb-12">
         <h1 className="text-3xl sm:text-4xl font-primary mb-3">
           <span className="font-semibold">Kumpulan </span>
           <JudulFitur>Artikel</JudulFitur>
@@ -155,7 +155,7 @@ function ArtikelList() {
           Simak beberapa kumpulan artikel di bawah ini
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-8">
         {renderData().map((article) => (
           <Link key={article.id} to={`/artikel/${article.id}`} className="mx-2">
             <CardArtikel

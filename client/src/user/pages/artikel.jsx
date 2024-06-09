@@ -1,20 +1,19 @@
+import ArtikelList from "../layouts/Section/SectionListArtikel";
+import CTAarticle from "../layouts/Section/SectionCTAarticle";
 import { useEffect } from "react";
-import NavbarHome from "../components/Navbar/NavbarHome";
-import DetailArtikel from "../layouts/detailArtikel";
-import Footer from "../components/Footer";
+import LayoutUser from "../layout";
 
-function Artikel() {
+function ListArticle() {
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll ke atas setiap kali komponen di-render ulang
-  }, []); // Tidak bergantung pada state apapun, sehingga di-reset setiap kali komponen di-render ulang
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="artikel bg-slate-50">
-      <NavbarHome />
-      <DetailArtikel />
-      <Footer />
-    </div>
+    <LayoutUser>
+      <CTAarticle />
+      <ArtikelList />
+    </LayoutUser>
   );
 }
 
-export default Artikel;
+export default ListArticle;
