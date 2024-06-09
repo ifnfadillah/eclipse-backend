@@ -150,7 +150,7 @@ function DetailWebinar() {
               type="navigate"
               name="selengkapnya"
             >
-              <Link to="/webinar" className="flex items-center">
+              <Link to="/sharenting-webinar" className="flex items-center">
                 Selengkapnya
                 <svg
                   className="w-5 h-5 ml-2 -mr-1 transition duration-300 ease-in-out"

@@ -4,6 +4,7 @@ import CardArtikel from "../components/cardArtikel";
 import LayoutUser from "../layout";
 import axios from "axios";
 import moment from "moment";
+import { shuffle } from "lodash";
 
 function DetailArtikel() {
   const { id } = useParams(); // Mengambil ID artikel dari URL
@@ -92,7 +93,7 @@ function DetailArtikel() {
           <h1 className="text-3xl sm:text-4xl font-primary mb-3 font-semibold">
             Artikel Lainnya
           </h1>
-          <Link to="/artikel-list">
+          <Link to="/artikel">
             <div className="w-[154px] h-[51px] px-5 py-[15px] bg-white rounded-xl shadow border-2 border-sky-700 text-sky-700 justify-center items-center gap-2.5 inline-flex hover:bg-sky-700 hover:text-sky-50 transition-all duration-300">
               <div className=" text-sm font-medium font-primary ">
                 Selengkapnya
@@ -102,20 +103,19 @@ function DetailArtikel() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-4">
           {/* Menampilkan artikel lainnya */}
-          {displayedArticles.map((article) => (
-            <Link
-              key={article.id}
-              to={`/artikel/${article.id}`}
-              className="mx-2"
-            >
-              <CardArtikel
-                imageSrc={`http://localhost:3001/uploads/${article.foto}`}
-                title={article.judul}
-                description={article.isi} // Perhatikan bahwa ini mungkin perlu diubah sesuai dengan format yang diinginkan
-                date={moment(article.tanggal).format("DD MMMM YYYY")}
-              />
-            </Link>
-          ))}
+          {shuffle(displayedArticles)
+            .filter((a) => a.id !== parseInt(id))
+            .slice(0, 3)
+            .map((a) => (
+              <Link key={a.id} to={`/artikel/${a.id}`} className="mx-2">
+                <CardArtikel
+                  imageSrc={`http://localhost:3001/uploads/${a.foto}`}
+                  title={a.judul}
+                  description={a.isi}
+                  date={moment(a.tanggal).format("DD MMMM YYYY")}
+                />
+              </Link>
+            ))}
         </div>
       </div>
     </LayoutUser>

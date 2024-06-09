@@ -504,7 +504,7 @@ app.get("/artikel/:id", (req, res) => {
   });
 });
 
-//UPDATE WEBINAR
+//UPDATE Artikel
 app.put("/artikel/update/:id", upload.single("foto"), (req, res) => {
   const artikelId = req.params.id;
   const { judul, author, tanggal, isi } = req.body;
@@ -671,7 +671,7 @@ app.put("/kidspedia/update/:id", upload.single("foto"), (req, res) => {
   });
 });
 
-//DELETE ARTIKEL
+//DELETE Kidspedia
 app.delete("/kidspedia/delete/:id", (req, res) => {
   const kidspediaId = req.params.id;
   const deleteQuery = "DELETE FROM kidspedia WHERE id = ?";
