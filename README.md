@@ -20,6 +20,8 @@ Run both with bash and terminal:
 ```terminal
 cd client
 #
+git install lodash
+
 npm run dev
 ```
 ```bash
