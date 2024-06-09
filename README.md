@@ -9,22 +9,24 @@ This is a full-stack web application built with Express.js for the back-end and 
 First, clone the repository:
 
 ```bash
-git clone
+# git clone
 
-npm install
+# npm install
 ```
 
 import parentify.sql to your database PhpMyAdmin
 
 Run both with bash and terminal:
 ```terminal
-cd client
-#
-npm run dev
+# cd client
+
+# git install lodash
+
+# npm run dev
 ```
 ```bash
-cd server
-#
-npm start
+# cd server
+
+# npm start
 
 
