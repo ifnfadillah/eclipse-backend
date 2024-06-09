@@ -14,14 +14,20 @@ const FeaturesHome = () => {
         <Deskripsi>Parentify membantu orang tua untuk memahami terkait parenting dan pola asuh yang tepat kepada anak disertai berbagai layanan untuk mendukung tumbuh kembang anak.</Deskripsi>
       </div>
       <div className="grid gap-8 lg:grid-cols-2 mb-4 py-6">
-        <CardFitur imgUrl="/assets/fitur1.png" judul="Panduan Pola Asuh" deskripsi="Memberikan pemahaman kepada orang tua terkait pola asuh yang tepat ke anak." />
-        <CardFitur imgUrl="/assets/fitur2.png" judul="Kenali Gaya Parenting" deskripsi="Membantu orang tua untuk mengenali jenis pola asuhnya kepada anak." />
+        <Link to="/edukasi/panduan-asuh">
+          <CardFitur imgUrl="/assets/fitur1.png" judul="Panduan Pola Asuh" deskripsi="Memberikan pemahaman kepada orang tua terkait pola asuh yang tepat ke anak." />
+        </Link>
+        <Link to="/edukasi/kenali-gaya">
+          <CardFitur imgUrl="/assets/fitur2.png" judul="Kenali Gaya Parenting" deskripsi="Membantu orang tua untuk mengenali jenis pola asuhnya kepada anak." />
+        </Link>
       </div>
       <div className="grid gap-8 lg:grid-cols-2">
-        <Link>
+        <Link to="/kidspedia">
           <CardFitur imgUrl="/assets/fitur3.png" judul="Kidspedia" deskripsi="Kumpulan bahan belajar untuk menunjang tumbuh kembang anak." />
         </Link>
-        <CardFitur imgUrl="/assets/fitur4.png" judul="Sharenting" deskripsi="Ruang interaksi antar orang tua untuk terhubung dengan ahli parenting." />
+        <Link to="/sharenting">
+          <CardFitur imgUrl="/assets/fitur4.png" judul="Sharenting" deskripsi="Ruang interaksi antar orang tua untuk terhubung dengan ahli parenting." />
+        </Link>
       </div>
     </div>
   );
