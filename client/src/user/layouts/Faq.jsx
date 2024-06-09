@@ -1,7 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import Judul from "../components/Judul";
-import JudulFitur from "../components/JudulFitur";
-import Deskripsi from "../components/Deskripsi";
 
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -25,10 +22,10 @@ const Faq = () => {
   return (
     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
       <div className="mx-auto max-w-screen-lg text-center mb-8">
-        <h2 className="mb-4 text-3xl md:text-5xl lg:text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+        <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
           Masih Ada Pertanyaan Tentang <strong className="text-sky-700">Parentify</strong>?
         </h2>
-        <p className="font-medium text-gray-800 lg:mb-16 sm:text-xl dark:text-gray-400">
+        <p className="font-medium text-gray-800 lg:mb-16 text-lg lg:text-xl dark:text-gray-400">
           Kami bekerja sama dengan beberapa ahli di bidang parenting maupun kesehatan dan mitra atau yayasan terpercaya. Berikut beberapa Mitra yang bekerja sama dengan Parentify.
         </p>
       </div>
@@ -63,9 +60,8 @@ const Faq = () => {
                 <h3 id={`accordion-collapse-heading-${index}`}>
                   <button
                     type="button"
-                    className={`flex items-center justify-between w-full p-6 font-primary font-medium md:text-2xl text-left bg-white border-b-0 shadow-lg transition-colors duration-300 ${
-                      activeIndex === index ? "text-sky-500 rounded-t-lg" : "text-sky-900 rounded-lg"
-                    }`}
+                    className={`flex items-center justify-between w-full p-6 font-primary font-medium md:text-xl lg:text-2xl text-left bg-white border-b-0 shadow-lg transition-colors duration-300 ${activeIndex === index ? "text-sky-500 rounded-t-lg" : "text-sky-900 rounded-lg"
+                      }`}
                     onClick={() => handleToggle(index)}
                     aria-expanded={activeIndex === index}
                     aria-controls={`accordion-collapse-body-${index}`}
@@ -83,7 +79,7 @@ const Faq = () => {
                   aria-labelledby={`accordion-collapse-heading-${index}`}
                 >
                   <div className="p-6 bg-white">
-                    <p className="mb-2 text-sky-900 md:text-lg">{item.answer}</p>
+                    <p className="mb-2 text-sky-900 text-md lg:text-lg">{item.answer}</p>
                   </div>
                 </div>
               </div>
