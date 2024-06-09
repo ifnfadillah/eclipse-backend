@@ -100,7 +100,7 @@ function DetailKomunitas() {
           </div>
         </div>
         {/* List Artikel */}
-        <div className="container max-w-screen-xl sm:py-16">
+        <div className="container max-w-screen-xl sm:py-8">
           <div className="flex flex-row justify-between mb-10 text-center sm:text-left items-center">
             <h1 className="lg:text-3xl text-2xl font-primary font-semibold ">Komunitas Lainnya</h1>
             <button
