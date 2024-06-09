@@ -22,12 +22,12 @@ import EditArtikel from "./admin/artikel/layout/EditArtikel";
 
 // user
 import HomeUser from "./user/pages/HomeUser";
-import Kidspedia from "./user/pages/kidspedia";
+import Kidspedia from "./user/pages/Kidspedia";
 import Sharenting from "./user/pages/Sharenting";
-import Webinar from "./user/pages/webinar";
+import Webinar from "./user/pages/listWebinar";
 import PanduanAsuh from "./user/pages/panduanasuh";
 import ListArticle from "./user/pages/listArtikel";
-import Komunitas from "./user/pages/komunitas";
+import Komunitas from "./user/pages/listKomunitas";
 import DetailKomunitas from "./user/pages/DetailKomunitas";
 import DetailWebinar from "./user/pages/DetailWebinar";
 import Artikel from "./user/pages/artikel";
@@ -37,7 +37,7 @@ import GayaParenting from "./user/pages/gayaparenting";
 import KenaliGaya from "./user/pages/kenaligaya";
 import DetailPanduan from "./user/pages/DetailPanduan";
 import DetailGaya from "./user/pages/DetailGaya";
-import ListVideoBelajar from "./user/pages/listVideoBelajar ";
+import ListVideoBelajar from "./user/pages/listVideoBelajar";
 import ListMewarnai from "./user/pages/listMewarnai";
 
 const ProtectedRoute = ({ element }) => {
@@ -64,8 +64,8 @@ function App() {
       <Route path="/edukasi/panduan-asuh" element={<PanduanAsuh />} />
       <Route path="/edukasi/panduan-asuh/:id" element={<DetailPanduan />} />
       <Route path="/edukasi/gaya-parenting/:id" element={<DetailGaya />} />
-      <Route path="/list-video" element={<ListVideoBelajar />} />
-      <Route path="/list-mewarnai" element={<ListMewarnai />} />
+      <Route path="/kidspedia/video" element={<ListVideoBelajar />} />
+      <Route path="/kidspedia/mewarnai" element={<ListMewarnai />} />
 
       {/* //ADMIN */}
       <Route path="/login" element={<Login />} />

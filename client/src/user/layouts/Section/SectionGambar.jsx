@@ -4,7 +4,7 @@ import Pagination from "@/user/components/paginationUser";
 import Judul from "@/user/components/Judul";
 import Deskripsi from "@/user/components/Deskripsi";
 import { Link } from "react-router-dom";
-import CardCategory from "@/user/components/CardCategory";
+import CardMewarnai from "@/user/components/CardMewarnai";
 
 const SectionGambar = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,15 +23,15 @@ const SectionGambar = () => {
 
   return (
     <div className="section-kategori-usia">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 mb-32">
-        <div className="mx-auto max-w-screen-lg text-center mb-16 lg:mb-24">
+      <div className="py-4 px-4 mx-auto max-w-screen-xl lg:px-6 lg:mb-0">
+        <div className="mx-auto mt-4 max-w-screen-lg text-center mb-12">
           <Judul>Lembar Mewarnai</Judul>
           <Deskripsi>Berikut beberapa lembar mewarnai yang dapat diakses oleh Parennials!</Deskripsi>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-1 gap-y-8">
           {renderData().map((gambar) => (
             <Link key={gambar.id} to={gambar.link} target="_blank" rel="noopener noreferrer" className="flex items-center px-2">
-              <CardCategory imageUrl={gambar.imageCard} title={gambar.title} />
+              <CardMewarnai imageUrl={gambar.imageCard} title={gambar.title} />
             </Link>
           ))}
         </div>

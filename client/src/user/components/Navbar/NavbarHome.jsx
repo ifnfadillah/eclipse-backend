@@ -32,6 +32,9 @@ const NavbarHome = () => {
   const isActiveLink = (path) => location.pathname === path;
 
   const isEdukasiActive = location.pathname.startsWith("/edukasi");
+  const isKidspediaActive = location.pathname.startsWith("/kidspedia");
+  const isSharentingActive = location.pathname.startsWith("/sharenting");
+  const isArtikelActive = location.pathname.startsWith("/artikel");
 
   return (
     <nav className={`bg-gradient-to-t from-sky-900 to-sky-600 sticky top-4 lg:mx-24 mx-8 border-blue-200 dark:border-gray-600 dark:bg-gray-900 ${isDropdownOpen ? "rounded-3xl" : "rounded-full"} shadow-lg z-50`}>
@@ -57,9 +60,8 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/"
-                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
-                  isActiveLink("/") ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
-                }`}
+                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isActiveLink("/") ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
+                  }`}
                 aria-current="page"
               >
                 Beranda
@@ -70,9 +72,8 @@ const NavbarHome = () => {
                 id="mega-menu-full-dropdown-button"
                 onClick={toggleDropdown}
                 data-collapse-toggle="mega-menu-full-dropdown"
-                className={`flex items-center justify-between w-full py-2 px-3 font-medium border-b border-gray-100 md:w-auto md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
-                  isEdukasiActive ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
-                }`}
+                className={`flex items-center justify-between w-full py-2 px-3 font-medium border-b border-gray-100 md:w-auto md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isEdukasiActive ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
+                  }`}
               >
                 Edukasi{" "}
                 <svg className={`w-2.5 h-2.5 ms-3 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : "rotate-0"}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -83,9 +84,8 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/kidspedia"
-                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
-                  isActiveLink("/kidspedia") ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
-                }`}
+                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isKidspediaActive ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
+                  }`}
               >
                 Kidspedia
               </Link>
@@ -93,9 +93,8 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/sharenting"
-                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
-                  isActiveLink("/sharenting") ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
-                }`}
+                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isSharentingActive ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
+                  }`}
               >
                 Sharenting
               </Link>
@@ -103,9 +102,8 @@ const NavbarHome = () => {
             <li>
               <Link
                 to="/artikel-list"
-                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${
-                  isActiveLink("/artikel-list") ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
-                }`}
+                className={`block py-2 px-3 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:textWhite md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 ${isActiveLink("/artikel-list") ? "text-gray-50 underline underline-offset-8 underline-mb-4 decoration-4 decoration-white" : "text-sky-200 hover:text-sky-300"
+                  }`}
               >
                 Artikel
               </Link>

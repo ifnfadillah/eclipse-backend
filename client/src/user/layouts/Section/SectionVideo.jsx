@@ -21,25 +21,23 @@ const SectionVideo = () => {
     return videoPembelajaran.slice(startIndex, endIndex);
   };
   return (
-    <div className="section-kategori-usia">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div className="mx-auto max-w-screen-lg text-center lg:mb-8">
-          <Judul>Video Belajar</Judul>
-          <Deskripsi>Berikut beberapa video belajar yang dapat diakses oleh Parennials!</Deskripsi>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-1 ">
-          {renderData().map((video) => (
-            <Link key={video.id} to={video.link} target="_blank" rel="noopener noreferrer" className="flex items-center px-2">
-              <CardVideo imageUrl={video.imageCard} title={video.title} link={video.link} />
-            </Link>
-          ))}
-        </div>
-        {videoPembelajaran.length > itemsPerPage && (
-          <div className="flex justify-center mt-10 md:mt-16">
-            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-          </div>
-        )}
+    <div className="py-4 px-4 mx-auto max-w-screen-xl lg:px-6 lg:mb-0">
+      <div className="mx-auto mt-4 max-w-screen-lg text-center mb-12">
+        <Judul>Video Belajar</Judul>
+        <Deskripsi>Berikut beberapa video belajar yang dapat diakses oleh Parennials!</Deskripsi>
       </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-8 ">
+        {renderData().map((video) => (
+          <Link key={video.id} to={video.link} target="_blank" rel="noopener noreferrer" className="flex items-center px-2">
+            <CardVideo imageUrl={video.imageCard} title={video.title} link={video.link} />
+          </Link>
+        ))}
+      </div>
+      {videoPembelajaran.length > itemsPerPage && (
+        <div className="flex justify-center mt-10 md:mt-16">
+          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        </div>
+      )}
     </div>
   );
 };
