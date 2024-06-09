@@ -688,6 +688,9 @@ app.delete("/kidspedia/delete/:id", (req, res) => {
   });
 });
 
+//Mengambil foto dari uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 //Auth Admin
 db.connect((err) => {
   if (err) throw err;

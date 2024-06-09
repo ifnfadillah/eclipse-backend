@@ -1,4 +1,4 @@
-import ArtikelList from "../layouts/Section/SectionListArtikel";
+import ArtikelList from "../layouts/Section/SectionLIstArtikel";
 import CTAarticle from "../layouts/Section/SectionCTAarticle";
 import { useEffect } from "react";
 import LayoutUser from "../layout";

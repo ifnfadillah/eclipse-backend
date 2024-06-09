@@ -22,15 +22,14 @@ import EditArtikel from "./admin/artikel/layout/EditArtikel";
 
 // user
 import HomeUser from "./user/pages/HomeUser";
-import Kidspedia from "./user/pages/Kidspedia";
-import Sharenting from "./user/pages/Sharenting";
+import Kidspedia from "./user/pages/kidspedia";
+import Sharenting from "./user/pages/sharenting";
 import Webinar from "./user/pages/listWebinar";
 import PanduanAsuh from "./user/pages/panduanasuh";
-import ListArticle from "./user/pages/Artikel";
 import Komunitas from "./user/pages/listKomunitas";
 import DetailKomunitas from "./user/pages/DetailKomunitas";
 import DetailWebinar from "./user/pages/DetailWebinar";
-import Artikel from "./user/pages/Artikel";
+import Artikel from "./user/pages/artikel";
 import HasilQuiz from "./user/pages/hasilquiz";
 import Quiz from "./user/pages/quiz";
 import GayaParenting from "./user/pages/gayaparenting";
@@ -61,7 +60,10 @@ function App() {
       <Route path="/edukasi/gaya-parenting" element={<GayaParenting />} />
       <Route path="/edukasi/kenali-gaya" element={<KenaliGaya />} />
       <Route path="/edukasi/kenali-gaya/quiz" element={<Quiz />} />
-      <Route path="/edukasi/kenali-gaya/quiz/hasilquiz" element={<HasilQuiz />} />
+      <Route
+        path="/edukasi/kenali-gaya/quiz/hasilquiz"
+        element={<HasilQuiz />}
+      />
       <Route path="/edukasi/panduan-asuh" element={<PanduanAsuh />} />
       <Route path="/edukasi/panduan-asuh/:id" element={<DetailPanduan />} />
       <Route path="/edukasi/gaya-parenting/:id" element={<DetailGaya />} />
@@ -70,27 +72,75 @@ function App() {
 
       {/* //ADMIN */}
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+      <Route
+        path="/dashboard"
+        element={<ProtectedRoute element={<Dashboard />} />}
+      />
       {/* //ADMIN MITRA */}
-      <Route path="/data-mitra" element={<ProtectedRoute element={<DataMitra />} />} />
-      <Route path="/data-mitra/add" element={<ProtectedRoute element={<AddMitra />} />} />
-      <Route path="/data-mitra/edit/:id" element={<ProtectedRoute element={<EditMitra />} />} />
+      <Route
+        path="/data-mitra"
+        element={<ProtectedRoute element={<DataMitra />} />}
+      />
+      <Route
+        path="/data-mitra/add"
+        element={<ProtectedRoute element={<AddMitra />} />}
+      />
+      <Route
+        path="/data-mitra/edit/:id"
+        element={<ProtectedRoute element={<EditMitra />} />}
+      />
       {/* //ADMIN KIDSPEDIA */}
-      <Route path="/data-kidspedia" element={<ProtectedRoute element={<DataKidspedia />} />} />
-      <Route path="/data-kidspedia/add" element={<ProtectedRoute element={<AddKidspedia />} />} />
-      <Route path="/data-kidspedia/edit/:id" element={<ProtectedRoute element={<EditKidspedia />} />} />
+      <Route
+        path="/data-kidspedia"
+        element={<ProtectedRoute element={<DataKidspedia />} />}
+      />
+      <Route
+        path="/data-kidspedia/add"
+        element={<ProtectedRoute element={<AddKidspedia />} />}
+      />
+      <Route
+        path="/data-kidspedia/edit/:id"
+        element={<ProtectedRoute element={<EditKidspedia />} />}
+      />
       {/* //ADMIN WEBINAR */}
-      <Route path="/data-webinar" element={<ProtectedRoute element={<DataWebinar />} />} />
-      <Route path="/data-webinar/add" element={<ProtectedRoute element={<AddWebinar />} />} />
-      <Route path="/data-webinar/edit/:id" element={<ProtectedRoute element={<EditWebinar />} />} />
+      <Route
+        path="/data-webinar"
+        element={<ProtectedRoute element={<DataWebinar />} />}
+      />
+      <Route
+        path="/data-webinar/add"
+        element={<ProtectedRoute element={<AddWebinar />} />}
+      />
+      <Route
+        path="/data-webinar/edit/:id"
+        element={<ProtectedRoute element={<EditWebinar />} />}
+      />
       {/* //ADMIN KOMUNITAS */}
-      <Route path="/data-komunitas" element={<ProtectedRoute element={<DataKomunitas />} />} />
-      <Route path="/data-komunitas/add" element={<ProtectedRoute element={<AddKomunitas />} />} />
-      <Route path="/data-komunitas/edit/:id" element={<ProtectedRoute element={<EditKomunitas />} />} />
+      <Route
+        path="/data-komunitas"
+        element={<ProtectedRoute element={<DataKomunitas />} />}
+      />
+      <Route
+        path="/data-komunitas/add"
+        element={<ProtectedRoute element={<AddKomunitas />} />}
+      />
+      <Route
+        path="/data-komunitas/edit/:id"
+        element={<ProtectedRoute element={<EditKomunitas />} />}
+      />
       {/* //ADMIN ARTIKEL */}
-      <Route path="/data-artikel" element={<ProtectedRoute element={<DataArtikel />} />} />
-      <Route path="/data-artikel/add" element={<ProtectedRoute element={<AddArtikel />} />} />
-      <Route path="/data-artikel/edit/:id" element={<ProtectedRoute element={<EditArtikel />} />} />
+      <Route
+        path="/data-artikel"
+        element={<ProtectedRoute element={<DataArtikel />} />}
+      />
+      <Route
+        path="/data-artikel/add"
+        element={<ProtectedRoute element={<AddArtikel />} />}
+      />
+      <Route
+        path="/data-artikel/edit/:id"
+        element={<ProtectedRoute element={<EditArtikel />} />}
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
