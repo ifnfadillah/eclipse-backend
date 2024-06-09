@@ -30,8 +30,8 @@ const SectionGambar = () => {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-1 gap-y-8">
           {renderData().map((gambar) => (
-            <Link key={gambar.id} to={gambar.link} target="_blank" rel="noopener noreferrer" className="flex items-center px-2">
-              <CardMewarnai imageUrl={gambar.imageCard} title={gambar.title} />
+            <Link key={gambar.id} to={gambar.link} className="flex items-center px-2">
+              <CardMewarnai imageUrl={gambar.imageCard} title={gambar.title} link={gambar.link} />
             </Link>
           ))}
         </div>
