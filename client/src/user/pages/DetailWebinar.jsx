@@ -2,8 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import LayoutUser from "../layout";
 import CardWebinar from "../components/CardWebinar";
-import axios from "axios"; // Tambahkan ini
+import axios from "axios";
 import moment from "moment";
+
+// Fungsi untuk memeriksa dan memformat harga
+const formatPrice = (price) => {
+  // Coba konversi harga menjadi angka
+  const numericPrice = parseFloat(price);
+
+  // Periksa apakah konversi berhasil (tidak menghasilkan NaN)
+  if (!isNaN(numericPrice)) {
+    // Jika harga adalah angka, format sebagai Rupiah
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(numericPrice);
+  } else {
+    // Jika harga adalah teks, tampilkan teks tersebut
+    return price;
+  }
+};
 
 function DetailWebinar() {
   const { id } = useParams();
@@ -107,7 +125,9 @@ function DetailWebinar() {
             {/* Harga webinar */}
             <h3 className="text-sm font-medium">
               Harga:{" "}
-              <span className="text-sm font-normal">{webinar.harga}</span>
+              <span className="text-sm font-normal">
+                {formatPrice(webinar.harga)}
+              </span>
             </h3>
             {/* Tombol daftar */}
             <button
@@ -173,12 +193,12 @@ function DetailWebinar() {
               <Link
                 key={webinar.id}
                 to={`/sharenting-webinar/${webinar.id}`}
-                className="px-2 "
+                className="px-2"
               >
                 <CardWebinar
                   imageSrc={`http://localhost:3001/uploads/${webinar.foto}`}
                   title={webinar.judul}
-                  price={webinar.harga}
+                  price={formatPrice(webinar.harga)}
                   date={moment(webinar.tanggal).format("DD MMMM YYYY")}
                 />
               </Link>
