@@ -428,7 +428,7 @@ app.delete("/webinar/delete/:id", (req, res) => {
   });
 });
 
-//MENAMPILKAN DATA WEBINAR
+//MENAMPILKAN DATA ARTIKEL
 app.get("/artikel", (req, res) => {
   const sql = "SELECT *, DATE_FORMAT(tanggal, '%Y/%m/%d') AS tanggal FROM artikel";
   db.query(sql, (err, result) => {
@@ -689,7 +689,7 @@ app.delete("/kidspedia/delete/:id", (req, res) => {
 });
 
 //Mengambil foto dari uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 //Auth Admin
 db.connect((err) => {
