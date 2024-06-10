@@ -24,20 +24,12 @@ const SectionMitra = () => {
     <div className="px-4 mx-auto max-w-screen-xl py-16 lg:px-6">
       <div className="mx-auto max-w-screen-lg text-center">
         <Judul>Mitra Kami</Judul>
-        <Deskripsi>
-          Berikut beberapa mitra atau yayasan terpercaya yang bekerja sama
-          dengan Parentify:
-        </Deskripsi>
+        <Deskripsi>Berikut beberapa mitra atau yayasan terpercaya yang bekerja sama dengan Parentify:</Deskripsi>
       </div>
       <div className="flex items-center justify-center py-4">
-        <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-2 md:gap-12 md:space-y-0">
+        <div className="space-y-8 md:grid md:grid-cols-1 lg:grid-cols-2 md:gap-12 md:space-y-0">
           {mitras.map((mitra) => (
-            <CardMitra
-              key={mitra.id}
-              imgUrl={`http://localhost:3001/uploads/${mitra.logo}`}
-              nama={mitra.nama}
-              width="100"
-            />
+            <CardMitra key={mitra.id} imgUrl={`http://localhost:3001/uploads/${mitra.logo}`} nama={mitra.nama} deskripsi={mitra.deskripsi} width="100" />
           ))}
         </div>
       </div>
