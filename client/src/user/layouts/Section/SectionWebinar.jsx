@@ -7,6 +7,24 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 
+// Fungsi untuk memeriksa dan memformat harga
+const formatPrice = (price) => {
+  // Coba konversi harga menjadi angka
+  const numericPrice = parseFloat(price);
+
+  // Periksa apakah konversi berhasil (tidak menghasilkan NaN)
+  if (!isNaN(numericPrice)) {
+    // Jika harga adalah angka, format sebagai Rupiah
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(numericPrice);
+  } else {
+    // Jika harga adalah teks, tampilkan teks tersebut
+    return price;
+  }
+};
+
 function SectionWebinar() {
   const [webinars, setWebinars] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,7 +87,7 @@ function SectionWebinar() {
               <CardWebinar
                 imageSrc={`http://localhost:3001/uploads/${webinar.foto}`}
                 title={webinar.judul}
-                price={webinar.harga}
+                price={formatPrice(webinar.harga)}
                 date={moment(webinar.tanggal).format("DD MMMM YYYY")}
               />
             </Link>
