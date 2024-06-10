@@ -9,7 +9,7 @@ function AddMitra() {
     const [values, setValues] = useState({
         nama: "",
         logo: "",
-        kontak: "",
+        deskripsi: "",
     });
 
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ function AddMitra() {
         e.preventDefault();
         const formData = new FormData();
         formData.append('nama', values.nama);
-        formData.append('kontak', values.kontak);
+        formData.append('deskripsi', values.deskripsi);
         formData.append('logo', values.logo);
 
         console.log('Submitting values:', values);
@@ -55,11 +55,11 @@ function AddMitra() {
                             placeholder="Masukkan URL logo mitra"
                             onChange={(e) => setValues({ ...values, logo: e.target.files[0], })} />
                         <Input
-                            text="Kontak Mitra"
-                            name="kontak"
-                            type="text"
-                            placeholder="Masukkan kontak mitra"
-                            onChange={(e) => setValues({ ...values, kontak: e.target.value })} />
+                            text="Deskripsi Mitra"
+                            name="deskripsi"
+                            type="desc"
+                            placeholder="Masukkan deskripsi mitra"
+                            onChange={(e) => setValues({ ...values, deskripsi: e.target.value })} />
                     </div>
                     <div className="mt-6 flex space-x-4 justify-end">
                         <Button

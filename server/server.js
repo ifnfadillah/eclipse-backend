@@ -76,7 +76,7 @@ app.get("/mitra/search", (req, res) => {
 
 //ADD MITRA
 app.post("/mitra", upload.single("logo"), (req, res) => {
-  const { nama, kontak } = req.body;
+  const { nama, deskripsi } = req.body;
   let logo = null;
   if (req.file) {
     const filename = path.basename(req.file.path);
@@ -84,12 +84,12 @@ app.post("/mitra", upload.single("logo"), (req, res) => {
   }
   console.log("Received data:", req.body);
 
-  if (!nama || !logo || !kontak) {
-    return res.status(400).json({ error: "Please provide nama, logo, and kontak" });
+  if (!nama || !logo || !deskripsi) {
+    return res.status(400).json({ error: "Please provide nama, logo, and deskripsi" });
   }
 
-  const sql = `INSERT INTO mitra (nama, logo, kontak, admin_id) VALUES (?, ?, ?, ?)`;
-  const values = [nama, logo, kontak, defaultAdminId];
+  const sql = `INSERT INTO mitra (nama, logo, deskripsi, admin_id) VALUES (?, ?, ?, ?)`;
+  const values = [nama, logo, deskripsi, defaultAdminId];
 
   db.query(sql, values, (err, result) => {
     if (err) {
@@ -120,25 +120,25 @@ app.get("/mitra/:id", (req, res) => {
 // UPDATE MITRA
 app.put("/mitra/update/:id", upload.single("logo"), (req, res) => {
   const mitraId = req.params.id;
-  const { nama, kontak } = req.body;
+  const { nama, deskripsi } = req.body;
   let logo = null;
   if (req.file) {
     const filename = path.basename(req.file.path);
     logo = filename;
   }
 
-  if (!nama || !kontak) {
-    return res.status(400).json({ error: "Please provide nama and kontak" });
+  if (!nama || !deskripsi) {
+    return res.status(400).json({ error: "Please provide nama and deskripsi" });
   }
 
   let updateQuery = "";
   const updateValues = [];
   if (logo) {
-    updateQuery = "UPDATE mitra SET nama = ?, logo = ?, kontak = ? WHERE id = ?";
-    updateValues.push(nama, logo, kontak, mitraId);
+    updateQuery = "UPDATE mitra SET nama = ?, logo = ?, deskripsi = ? WHERE id = ?";
+    updateValues.push(nama, logo, deskripsi, mitraId);
   } else {
-    updateQuery = "UPDATE mitra SET nama = ?, kontak = ? WHERE id = ?";
-    updateValues.push(nama, kontak, mitraId);
+    updateQuery = "UPDATE mitra SET nama = ?, deskripsi = ? WHERE id = ?";
+    updateValues.push(nama, deskripsi, mitraId);
   }
 
   db.query(updateQuery, updateValues, (err, result) => {
@@ -689,7 +689,7 @@ app.delete("/kidspedia/delete/:id", (req, res) => {
 });
 
 //Mengambil foto dari uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 //Auth Admin
 db.connect((err) => {
