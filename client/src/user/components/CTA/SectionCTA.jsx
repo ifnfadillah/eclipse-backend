@@ -9,7 +9,7 @@ const SectionCTA = (props) => {
         <h2 className="mb-4 text-3xl md:text-4xl font-primary font-medium text-gray-900 dark:text-white">
           {judul1} <strong className="text-sky-700 font-primary">{fitur}</strong> {judul2}
         </h2>
-        <p className="mb-6 font-secondary text-md text-gray-700 md:text-lg dark:text-gray-400">{deksripsi}</p>
+        <p className="mb-8 font-secondary text-md text-gray-700 md:text-lg dark:text-gray-400">{deksripsi}</p>
         {children && <ButtonCTA>{children}</ButtonCTA>}
         {btn2 && <ButtonCTA2>{btn2}</ButtonCTA2>}
       </div>
