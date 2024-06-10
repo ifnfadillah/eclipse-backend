@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import LayoutUser from "../layout";
 import CardWebinar from "../components/CardWebinar";
 import axios from "axios";
-import axios from "axios";
 import moment from "moment";
 
 // Fungsi untuk memeriksa dan memformat harga
