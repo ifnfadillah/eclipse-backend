@@ -2,8 +2,8 @@ const SectionParaAhli = ({ nama, pekerjaan, desk, imgUrl }) => {
   return (
     <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-10">
       <figure className="max-w-screen-xl mx-auto">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium font-primary">Saran dari Ahli</h1>
-        <blockquote className="text-lg md:text-xl lg:text-2xl font-medium text-zinc-700 mt-4">
+        <h1 className="text-3xl md:text-4xl font-medium font-primary">Saran dari Ahli</h1>
+        <blockquote className="text-lg md:text-xl  font-medium text-zinc-700 mt-4">
           <p>{desk}</p>
         </blockquote>
         <figcaption className="flex flex-col items-center justify-center mt-6 space-y-3 lg:space-y-0 lg:space-x-3 lg:flex-row">

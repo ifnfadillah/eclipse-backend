@@ -53,7 +53,7 @@ const DetailGaya = () => {
               </ButtonCTA2>
             </div>
             <div className="flex items-center justify-center">
-              <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 md:space-y-0">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-4">
                 {otherGaya.map((gaya) => (
                   <Link key={gaya.id} to={`/edukasi/gaya-parenting/${gaya.id}`}>
                     <CardCategory title={gaya.title} imageUrl={gaya.imageCard} />

@@ -11,7 +11,7 @@ function EditMitra() {
     const [values, setValues] = useState({
         nama: "",
         logo: "",
-        kontak: "",
+        deskripsi: "",
     });
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function EditMitra() {
                 console.log('Response:', res);
                 const responseData = res.data;
                 if (responseData) {
-                    setValues({ ...values, nama: responseData.nama, logo: responseData.logo, kontak: responseData.kontak });
+                    setValues({ ...values, nama: responseData.nama, logo: responseData.logo, deskripsi: responseData.deskripsi });
                 } else {
                     console.error('Data not found');
                 }
@@ -36,7 +36,7 @@ function EditMitra() {
         e.preventDefault();
         const formData = new FormData();
         formData.append('nama', values.nama);
-        formData.append('kontak', values.kontak);
+        formData.append('deskripsi', values.deskripsi);
         formData.append('logo', values.logo);
 
         axios.put(`http://localhost:3001/mitra/update/${id}`, formData)
@@ -70,12 +70,12 @@ function EditMitra() {
                             value={values.logo}
                             onChange={(e) => setValues({ ...values, logo: e.target.files[0] })} />
                         <Input
-                            text="Kontak Mitra"
-                            name="kontak"
-                            type="text"
-                            placeholder="Masukkan kontak mitra"
-                            value={values.kontak}
-                            onChange={(e) => setValues({ ...values, kontak: e.target.value })} />
+                            text="Deskripsi Mitra"
+                            name="deskripsi"
+                            type="desc"
+                            placeholder="Masukkan deskripsi mitra"
+                            value={values.deskripsi}
+                            onChange={(e) => setValues({ ...values, deskripsi: e.target.value })} />
                     </div>
                     <div className="mt-6 flex space-x-4 justify-end">
                         <Button

@@ -57,10 +57,10 @@ const DetailPanduan = () => {
         </SectionGizi>
         <SectionParaAhli desk={pola.expertAdvice} nama={pola.ahli} pekerjaan={pola.pekerjaan} imgUrl={pola.imageAhli} />
 
-        <div className="py-8 mx-auto max-w-screen-xl sm:py-16">
-          <div className="mx-auto text-center mb-16">
+        <div className="py-8 mx-auto max-w-screen-xl ">
+          <div className="mx-auto text-center mb-6">
             <div className="flex items-center justify-between mb-4">
-              <Judul className="text-left">
+              <Judul className="text-left ">
                 <JudulFitur>Pola Asuh </JudulFitur> lainnya
               </Judul>
               <ButtonCTA2>

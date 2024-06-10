@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import LayoutUser from "../layout";
 import CardWebinar from "../components/CardWebinar";
 import axios from "axios";
+import axios from "axios";
 import moment from "moment";
 
 // Fungsi untuk memeriksa dan memformat harga
@@ -28,12 +29,12 @@ function DetailWebinar() {
   const [webinar, setWebinar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [displayedWebinars, setDisplayedWebinars] = useState([]); // Tambahkan ini
+  const [displayedWebinars, setDisplayedWebinars] = useState([]);
 
   useEffect(() => {
     const fetchWebinar = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/webinar/${id}`); // Sesuaikan dengan URL endpoint Anda
+        const response = await axios.get(`http://localhost:3001/webinar/${id}`);
         setWebinar(response.data);
       } catch (error) {
         setError(error);
@@ -45,11 +46,10 @@ function DetailWebinar() {
     fetchWebinar();
   }, [id]);
 
-  // Tambahkan useEffect untuk mengambil data webinar lainnya
   useEffect(() => {
     const fetchOtherWebinars = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/webinar"); // Ganti URL sesuai dengan URL endpoint Anda
+        const response = await axios.get("http://localhost:3001/webinar");
         const otherWebinars = response.data.filter(
           (item) => item.id !== parseInt(id)
         );
@@ -66,8 +66,8 @@ function DetailWebinar() {
   }, [id]);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll ke atas setiap kali komponen di-render
-  }); // Tidak ada dependensi, jadi hanya terjadi saat pertama kali komponen di-mount
+    window.scrollTo(0, 0);
+  });
 
   if (loading) {
     return <div>Loading...</div>;
