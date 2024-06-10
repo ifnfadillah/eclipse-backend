@@ -7,7 +7,7 @@ const Quiz = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="quiz bg-slate-50">
+    <div className="quiz">
       <NavbarHome />
       <SectionQuiz />
     </div>

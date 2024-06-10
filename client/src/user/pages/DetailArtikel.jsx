@@ -7,7 +7,7 @@ import moment from "moment";
 import { shuffle } from "lodash";
 
 function DetailArtikel() {
-  const { id } = useParams(); // Mengambil ID artikel dari URL
+  const { id } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -61,21 +61,13 @@ function DetailArtikel() {
       <div className="w-full px-5 mt-5 sm:px-8 py-10 flex flex-col items-center gap-12">
         {/* Judul dan informasi artikel */}
         <div className="w-full max-w-[1290px] rounded-[25px] flex flex-col gap-3">
-          <div className="text-neutral-700 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-primary leading-20">
-            {article.judul}
-          </div>
+          <div className="text-neutral-700 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-primary leading-20">{article.judul}</div>
           <div className="text-neutral-400 text-lg font-semibold font-primary">
             {moment(article.tanggal).format("DD MMMM YYYY")} - {article.author}
           </div>
         </div>
         {/* Gambar artikel */}
-        {article.foto && (
-          <img
-            className="w-full md:max-w-[1200px] md:h-[467px] rounded-[20px] object-cover"
-            src={`http://localhost:3001/uploads/${article.foto}`}
-            alt={article.judul}
-          />
-        )}
+        {article.foto && <img className="w-full md:max-w-[1200px] md:h-[467px] rounded-[20px] object-cover" src={`http://localhost:3001/uploads/${article.foto}`} alt={article.judul} />}
         {/* Isi artikel */}
         <div className="w-full max-w-[1290px] rounded-[25px] flex flex-col gap-6">
           <div className="text-neutral-700 rounded-[25px] p-6 bg-zinc-100 text-sm md:text-xl font-primary leading-9">
@@ -90,14 +82,10 @@ function DetailArtikel() {
       {/* Artikel lainnya */}
       <div className="container py-8 max-w-screen-xl sm:py-16 lg:px-6 mb-8">
         <div className="flex flex-row justify-between mb-10 text-center sm:text-left">
-          <h1 className="text-3xl sm:text-4xl font-primary mb-3 font-semibold">
-            Artikel Lainnya
-          </h1>
+          <h1 className="text-3xl sm:text-4xl font-primary mb-3 font-semibold">Artikel Lainnya</h1>
           <Link to="/artikel">
             <div className="w-[154px] h-[51px] px-5 py-[15px] bg-white rounded-xl shadow border-2 border-sky-700 text-sky-700 justify-center items-center gap-2.5 inline-flex hover:bg-sky-700 hover:text-sky-50 transition-all duration-300">
-              <div className=" text-sm font-medium font-primary ">
-                Selengkapnya
-              </div>
+              <div className=" text-sm font-medium font-primary ">Selengkapnya</div>
             </div>
           </Link>
         </div>
@@ -108,12 +96,7 @@ function DetailArtikel() {
             .slice(0, 3)
             .map((a) => (
               <Link key={a.id} to={`/artikel/${a.id}`} className="mx-2">
-                <CardArtikel
-                  imageSrc={`http://localhost:3001/uploads/${a.foto}`}
-                  title={a.judul}
-                  description={a.isi}
-                  date={moment(a.tanggal).format("DD MMMM YYYY")}
-                />
+                <CardArtikel imageSrc={`http://localhost:3001/uploads/${a.foto}`} title={a.judul} description={a.isi} date={moment(a.tanggal).format("DD MMMM YYYY")} />
               </Link>
             ))}
         </div>

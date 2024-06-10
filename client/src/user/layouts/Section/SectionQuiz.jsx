@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionHasil from "./SectionHasil";
 
 const SectionQuiz = () => {
@@ -6,6 +6,7 @@ const SectionQuiz = () => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [isFinished, setIsFinished] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [hasilAkhir, setHasilAkhir] = useState(0);
 
   const questions = [
     {
@@ -187,24 +188,83 @@ const SectionQuiz = () => {
       setProgress(((prevQuestion + 1) / questions.length) * 100);
     }
   };
+  const getScore = () => {
+    let score = 0;
+    questions.forEach((question) => {
+      const selectedAnswer = selectedAnswers[question.id];
+      if (selectedAnswer && question.answers.find((answer) => answer.id === selectedAnswer && answer.isCorrect)) {
+        score++;
+      }
+    });
+    return score;
+  };
 
-  // const getScore = () => {
-  //   let score = 0;
-  //   questions.forEach((question) => {
-  //     const selectedAnswer = selectedAnswers[question.id];
-  //     if (selectedAnswer && question.answers.find((answer) => answer.id === selectedAnswer && answer.isCorrect)) {
-  //       score++;
-  //     }
-  //   });
-  //   return score;
-  // };
+  useEffect(() => {
+    if (isFinished) {
+      const score = getScore();
+      setHasilAkhir(score);
+    }
+  }, [isFinished]);
 
   return (
     <div className=" min-h-screen font-primary">
-      <div className="max-w-screen-xl mx-auto  bg-gray-50 mb-8">
+      <div className="max-w-screen-xl mx-auto mb-8">
         {isFinished ? (
-          <div className="">
-            <SectionHasil />
+          <div>
+            {hasilAkhir == 0 && (
+              <SectionHasil
+                imgUrl="/assets/ArticleSection.png"
+                gayaParenting="Anda tidak punya bakat parenting"
+                deksripsi="Selamat!Berdasarkan jawaban Anda, gaya parenting yang paling sesuai untuk Anda adalah Authoritarian Parenting. 
+                    Berikan umpan balik positif dengan memuji prestasi anak-anak Anda, bukan hanya menunjukkan kesalahan mereka. Usahakan untuk 
+                    lebih responsif terhadap kebutuhan dan perasaan anak-anak,serta dorong kemandirian mereka dengan memberi kesempatan untuk membuat keputusan sendiri."
+              />
+            )}
+            {hasilAkhir == 1 && (
+              <SectionHasil
+                imgUrl="/assets/imgGaya1.png"
+                gayaParenting="Authoritarian Parenting"
+                deksripsi="Selamat! Berdasarkan jawaban Anda, gaya parenting yang paling sesuai untuk Anda adalah Authoritarian Parenting. 
+                Berikan umpan balik positif dengan memuji prestasi anak Anda, bukan hanya menunjukkan kesalahan mereka. Usahakan untuk lebih responsif terhadap perasaan anak, serta berikan mereka kesempatan untuk membuat keputusan sendiri."
+                link="/edukasi/gaya-parenting/1"
+              />
+            )}
+            {hasilAkhir == 2 && (
+              <SectionHasil
+                imgUrl="/assets/imgGaya2.png"
+                gayaParenting="Authoritative Parenting"
+                deksripsi="Selamat! Berdasarkan jawaban Anda, gaya parenting yang paling sesuai untuk Anda adalah Authoritative Parenting. Gaya parenting ini menekankan pada kombinasi antara kasih sayang dan pengendalian yang seimbang. 
+                Anda memberikan batasan yang jelas dan tegas, tetapi juga mendukung dan responsif terhadap kebutuhan anak Anda."
+                link="/edukasi/gaya-parenting/2"
+              />
+            )}
+            {hasilAkhir == 3 && (
+              <SectionHasil
+                imgUrl="/assets/imgGaya3.png"
+                gayaParenting="Permissive Parenting"
+                deksripsi="Selamat! Berdasarkan jawaban Anda, gaya parenting yang paling sesuai untuk Anda adalah Permissive Parenting. Gaya parenting ini menekankan pada kebebasan dan kasih sayang dalam hubungan dengan anak. 
+                Anda cenderung fleksibel dengan aturan dan lebih menghargai kebahagiaan serta kebebasan anak."
+                link="/edukasi/gaya-parenting/3"
+              />
+            )}
+            {hasilAkhir == 4 && (
+              <SectionHasil
+                imgUrl="/assets/imgGaya4.png"
+                gayaParenting="Neglectful Parenting"
+                deksripsi="Selamat! Berdasarkan jawaban Anda, gaya parenting yang paling sesuai untuk Anda adalah Neglectful Parenting. 
+                Gaya parenting ini cenderung kurang terlibat dalam kehidupan anak dan memberikan sedikit bimbingan atau perhatian."
+                link="/edukasi/gaya-parenting/4"
+              />
+            )}
+            {hasilAkhir == 5 && (
+              <SectionHasil
+                imgUrl="/assets/imgGaya5.png"
+                gayaParenting="Indulgent Parenting"
+                deksripsi="Selamat! Berdasarkan jawaban Anda, gaya parenting yang paling sesuai untuk Anda adalah Indulgent Parenting. 
+                Gaya parenting ini menekankan pada kasih sayang dan kebebasan, serta cenderung memanjakan anak."
+                link="/edukasi/gaya-parenting/5"
+              />
+            )}
           </div>
         ) : (
           <div className="py-12 px-24">
