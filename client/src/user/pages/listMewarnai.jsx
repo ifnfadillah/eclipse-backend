@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import BannerKidspedia from "../components/Banner/BannerKidspedia";
+import BannerKidspedia from "../kidspedia/layouts/BannerKidspedia";
 import LayoutUser from "../layout";
-import SectionGambar from "../layouts/Section/SectionGambar";
+import SectionGambar from "../kidspedia/lembarMewarnai/layouts/SectionGambar";
 
 const ListMewarnai = () => {
   useEffect(() => {

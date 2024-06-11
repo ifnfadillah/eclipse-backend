@@ -1,5 +1,5 @@
-import ArtikelList from "../layouts/Section/SectionLIstArtikel";
-import CTAarticle from "../layouts/Section/SectionCTAarticle";
+import ArtikelList from "../artikel/layouts/SectionLIstArtikel";
+import CTAarticle from "../artikel/layouts/SectionCTAarticle";
 import { useEffect } from "react";
 import LayoutUser from "../layout";
 

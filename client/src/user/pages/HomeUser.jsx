@@ -1,9 +1,9 @@
-import SectionHome from "../layouts/Section/SectionHome";
-import FeaturesHome from "../layouts/FeaturesHome";
-import Testimonial from "../layouts/Testimonial";
-import VideoShowcase from "../layouts/VideoShowcase";
-import Faq from "../layouts/Faq";
-import SectionMitra from "../layouts/Section/SectionMitra";
+import SectionHome from "../beranda/layouts/SectionHome";
+import FeaturesHome from "../beranda/layouts/FeaturesHome";
+import Testimonial from "../beranda/layouts/Testimonial";
+import VideoShowcase from "../beranda/layouts/VideoShowcase";
+import Faq from "../beranda/layouts/Faq";
+import SectionMitra from "../beranda/layouts/SectionMitra";
 import { useEffect } from "react";
 import LayoutUser from "../layout";
 

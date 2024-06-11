@@ -1,8 +1,8 @@
 import BannerPanduan from "../components/BannerPanduan";
-import SectionKenaliGaya from "../layouts/Section/SectionKenaliGaya";
+import SectionKenaliGaya from "../edukasi/kenaliGaya/layouts/SectionKenaliGaya";
 import { useEffect } from "react";
 import LayoutUser from "../layout";
-import BannerKenali from "../components/Banner/BannerKenali";
+import BannerKenali from "../edukasi/kenaliGaya/layouts/BannerKenali";
 
 function KenaliGaya() {
   useEffect(() => {

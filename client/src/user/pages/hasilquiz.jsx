@@ -1,5 +1,5 @@
 import NavbarHome from "../components/Navbar/NavbarHome";
-import SectionHasil from "../layouts/Section/SectionHasil";
+import SectionHasil from "../edukasi/quiz/layouts/SectionHasil";
 
 const HasilQuiz = () => {
   return (

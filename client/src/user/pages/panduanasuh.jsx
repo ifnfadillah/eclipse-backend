@@ -1,7 +1,7 @@
-import SectionPanduan from "../layouts/Section/SectionPanduan";
-import SectionCategory from "../layouts/Section/SectionCategory";
+import SectionPanduan from "../edukasi/panduanAsuh/layouts/SectionPanduan";
+import SectionCategory from "../edukasi/panduanAsuh/layouts/SectionCategory";
 
-import BannerPanduan from "../components/Banner/BannerPanduan";
+import BannerPanduan from "../edukasi/panduanAsuh/layouts/BannerPanduan";
 import { useEffect } from "react";
 import LayoutUser from "../layout";
 

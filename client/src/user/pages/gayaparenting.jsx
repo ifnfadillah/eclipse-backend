@@ -1,8 +1,8 @@
-import SectionGayaParenting from "../layouts/Section/SectionGayaParenting";
-import SectionCardGaya from "../layouts/Section/SectionCardGaya";
+import SectionGayaParenting from "../edukasi/gayaParenting/layouts/SectionGayaParenting";
+import SectionCardGaya from "../edukasi/gayaParenting/layouts/SectionCardGaya";
 import { useEffect } from "react";
 import LayoutUser from "../layout";
-import BannerGaya from "../components/Banner/BannerGaya";
+import BannerGaya from "../edukasi/gayaParenting/layouts/BannerGaya";
 
 function GayaParenting() {
   useEffect(() => {

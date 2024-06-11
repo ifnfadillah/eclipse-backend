@@ -9,7 +9,7 @@ import LayoutUser from "@/user/layout";
 import BannerDetailPanduan from "../components/Banner/BannerDetailPanduan";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { polaAsuh } from "../layouts/Data/polaAsuh";
+import { polaAsuh } from "../data/polaAsuh";
 import CardCategory from "../components/CardCategory";
 import Judul from "../components/Judul";
 import JudulFitur from "../components/JudulFitur";
@@ -64,7 +64,7 @@ const DetailPanduan = () => {
                 <JudulFitur>Pola Asuh </JudulFitur> lainnya
               </Judul>
               <ButtonCTA2>
-                <Link to="/panduan-asuh">Selengkapnya</Link>
+                <Link to="/edukasi/panduan-asuh">Selengkapnya</Link>
               </ButtonCTA2>
             </div>
             <div className="flex items-center justify-center">

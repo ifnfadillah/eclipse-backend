@@ -5,12 +5,12 @@ import { Link, useParams } from "react-router-dom";
 import SectionPola from "../components/SectionPola";
 import CardPerilaku from "../components/CardPerilaku";
 import SectionParaAhli from "../components/SectionParaAhli";
-import { gayaParenting } from "../layouts/Data/gayaParenting";
+import { gayaParenting } from "../data/gayaParenting";
 import Judul from "../components/Judul";
 import JudulFitur from "../components/JudulFitur";
 import ButtonCTA2 from "../components/CTA/Button/ButtonCTA2";
 import CardCategory from "../components/CardCategory";
-import BannerGaya from "../components/Banner/BannerGaya";
+import BannerGaya from "../edukasi/gayaParenting/layouts/BannerGaya";
 
 const DetailGaya = () => {
   useEffect(() => {
@@ -49,7 +49,7 @@ const DetailGaya = () => {
                 <JudulFitur>Gaya Parenting </JudulFitur> lainnya
               </Judul>
               <ButtonCTA2>
-                <Link to="/gaya-parenting">Selengkapnya</Link>
+                <Link to="/edukasi/gaya-parenting">Selengkapnya</Link>
               </ButtonCTA2>
             </div>
             <div className="flex items-center justify-center">

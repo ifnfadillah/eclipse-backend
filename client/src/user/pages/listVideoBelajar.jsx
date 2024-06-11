@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import BannerKidspedia from "../components/Banner/BannerKidspedia";
+import BannerKidspedia from "../kidspedia/layouts/BannerKidspedia";
 import LayoutUser from "../layout";
-import SectionVideo from "../layouts/Section/SectionVideo";
+import SectionVideo from "../kidspedia/videoPembelajaran/layouts/SectionVideo";
 
 const ListVideoBelajar = () => {
   useEffect(() => {

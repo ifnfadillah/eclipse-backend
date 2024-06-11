@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import NavbarHome from "../components/Navbar/NavbarHome";
-import SectionQuiz from "../layouts/Section/SectionQuiz";
+import SectionQuiz from "../edukasi/quiz/layouts/SectionQuiz";
 
 const Quiz = () => {
   useEffect(() => {

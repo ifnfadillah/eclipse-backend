@@ -1,6 +1,6 @@
-import SectionKidspedia from "../layouts/Section/SectionKidspedia";
-import FeaturesKidspedia from "../layouts/FeaturesKidspedia";
-import BannerKidspedia from "../components/Banner/BannerKidspedia";
+import SectionKidspedia from "../kidspedia/layouts/SectionKidspedia";
+import FeaturesKidspedia from "../kidspedia/layouts/FeaturesKidspedia";
+import BannerKidspedia from "../kidspedia/layouts/BannerKidspedia";
 import { useEffect } from "react";
 import LayoutUser from "../layout";
 
