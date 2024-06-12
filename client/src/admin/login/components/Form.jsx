@@ -10,21 +10,33 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3001/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
-    const data = await response.json();
-    if (response.ok) {
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch("http://localhost:3001/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": token
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        throw new Error(errorData || "Login failed");
+      }
+
+      const data = await response.json();
       localStorage.setItem("token", data.token);
       navigate("/dashboard");
-    } else {
-      alert(data.message);
+
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert(error.message);
     }
   };
+
 
   return (
     <div className="w-full rounded-2xl shadow-lg md:mt-0 sm:max-w-md xl:p-0 bg-gray-50">

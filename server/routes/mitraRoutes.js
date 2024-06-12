@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const mitraController = require("../controllers/mitraController");
+const verifyToken = require("../middleware/authMiddleware");
 
 //MULTER UPLOADS
 const storage = multer.diskStorage({
@@ -28,15 +29,15 @@ router.get("/", mitraController.getAllMitra);
 router.get("/search", mitraController.searchMitra);
 
 //MENAMBAH DATA MITRA
-router.post("/", upload.single("logo"), mitraController.addMitra);
+router.post("/", verifyToken, upload.single("logo"), mitraController.addMitra);
 
 //MENGAMBIL DATA MITRA BERDASARKAN ID
 router.get("/:id", mitraController.getMitraById);
 
 //MENGUPDATE DATA MITRA
-router.put("/update/:id", upload.single("logo"), mitraController.updateMitra);
+router.put("/update/:id", verifyToken, upload.single("logo"), mitraController.updateMitra);
 
 //MENGHAPUS DATA MITRA
-router.delete("/delete/:id", mitraController.deleteMitra);
+router.delete("/delete/:id", verifyToken, mitraController.deleteMitra);
 
 module.exports = router;

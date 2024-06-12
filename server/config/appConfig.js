@@ -12,7 +12,7 @@ const DB_PASSWORD = process.env.DATABASE_PASSWORD ?? "";
 const DB_NAME = process.env.DATABASE_NAME ?? "parentify";
 
 // AUTHENTICATION
-const SECRET = process.env.JWT_SECRET ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE4MDg1OTEwLCJleHAiOjE3MTgwODk1MTB9.SFUcw3Gh_xVjZdCQLWdbAIHFEnz9v8Phwr3WIWTFAQ8";
+const SECRET = process.env.JWT_SECRET ?? "";
 
 module.exports = {
   BASE_URL,
