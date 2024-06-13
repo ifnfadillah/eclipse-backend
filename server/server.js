@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const endpoint = require("express-list-endpoints");
 const { BASE_URL, PORT } = require("./config/appConfig");
+const dashboardRoutes = require("./routes/countDashboardRoutes");
 const mitraRoutes = require("./routes/mitraRoutes");
 const komunitasRoutes = require("./routes/komunitasRoutes");
 const webinarRoutes = require("./routes/webinarRoutes");
@@ -28,6 +29,9 @@ const db = mysql.createConnection({
   password: "",
   database: "parentify",
 });
+
+//DATA DASHBOARD
+app.use("/dashboard", dashboardRoutes);
 
 //DATA MITRA
 app.use("/mitra", mitraRoutes);
