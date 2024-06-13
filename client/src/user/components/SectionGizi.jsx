@@ -11,7 +11,7 @@ const SectionGizi = ({ usia, children }) => {
         </Judul>
         <Deskripsi>Berikut merupakan asupan gizi yang harus terpenuhi pada anak {usia}</Deskripsi>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-8 px-8 md:px-0">{children}</div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8 px-4 md:px-0">{children}</div>
     </div>
   );
 };

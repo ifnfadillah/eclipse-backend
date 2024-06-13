@@ -1,6 +1,6 @@
 const CardMitra = ({ imgUrl, nama, deskripsi }) => {
   return (
-    <div className="max-w-md sm:max-w-full px-10 py-8 md:px-10 border border-gray-300 rounded-lg shadow-xl">
+    <div className="max-w-md sm:max-w-lg px-10 py-8 md:px-10 border border-gray-300 rounded-lg shadow-xl">
       <div className="flex justify-center">
         <img className="w-full h-auto object-cover" src={imgUrl} alt={nama} />
       </div>

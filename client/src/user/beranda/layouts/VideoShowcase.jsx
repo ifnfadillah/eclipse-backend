@@ -21,13 +21,23 @@ const VideoShowcase = () => {
                   className="absolute top-0 left-0 w-full h-full"
                   width="460"
                   height="258"
-                  src="https://www.youtube.com/embed/UToeb9Cd8KQ?si=GOZao36-Bb1tHA_P"
+                  src="https://www.youtube.com/embed/UToeb9Cd8KQ?si=bQzuMdLhcrVRDZZQ"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+
+                {/* <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  width="460"
+                  height="258"
+                  src="https://www.youtube.com/embed/UToeb9Cd8KQ?si=eHtid1Ftb5ZvSHcA"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
-                ></iframe>
+                ></iframe> */}
               </div>
             </div>
           </div>
