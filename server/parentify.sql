@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 04:53 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 15 Jun 2024 pada 15.40
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel`
+-- Struktur dari tabel `artikel`
 --
 
 CREATE TABLE `artikel` (
@@ -58,7 +58,7 @@ CREATE TABLE `artikel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `artikel`
+-- Dumping data untuk tabel `artikel`
 --
 
 INSERT INTO `artikel` (`id`, `judul`, `author`, `foto`, `tanggal`, `isi`, `admin_id`) VALUES
@@ -75,7 +75,7 @@ INSERT INTO `artikel` (`id`, `judul`, `author`, `foto`, `tanggal`, `isi`, `admin
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_kidspedia`
+-- Struktur dari tabel `kategori_kidspedia`
 --
 
 CREATE TABLE `kategori_kidspedia` (
@@ -84,7 +84,7 @@ CREATE TABLE `kategori_kidspedia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `kategori_kidspedia`
+-- Dumping data untuk tabel `kategori_kidspedia`
 --
 
 INSERT INTO `kategori_kidspedia` (`id`, `nama`) VALUES
@@ -94,7 +94,7 @@ INSERT INTO `kategori_kidspedia` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kidspedia`
+-- Struktur dari tabel `kidspedia`
 --
 
 CREATE TABLE `kidspedia` (
@@ -107,7 +107,7 @@ CREATE TABLE `kidspedia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `kidspedia`
+-- Dumping data untuk tabel `kidspedia`
 --
 
 INSERT INTO `kidspedia` (`id`, `kategori_id`, `judul`, `foto`, `link`, `admin_id`) VALUES
@@ -143,7 +143,7 @@ INSERT INTO `kidspedia` (`id`, `kategori_id`, `judul`, `foto`, `link`, `admin_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komunitas`
+-- Struktur dari tabel `komunitas`
 --
 
 CREATE TABLE `komunitas` (
@@ -156,7 +156,7 @@ CREATE TABLE `komunitas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `komunitas`
+-- Dumping data untuk tabel `komunitas`
 --
 
 INSERT INTO `komunitas` (`id`, `nama`, `foto`, `deskripsi`, `link_daftar`, `admin_id`) VALUES
@@ -171,34 +171,34 @@ INSERT INTO `komunitas` (`id`, `nama`, `foto`, `deskripsi`, `link_daftar`, `admi
 (11, 'Teen Parents', 'komunitas9.png', 'Komunitas dengan sebuah ruang yang mendukung remaja yang sedang menjalani peran sebagai orang tua. Di sini, Anda akan menemukan dukungan emosional, berbagi pengalaman, serta tips praktis dari sesama remaja dan ahli parenting.', 'https://docs.google.com/forms/d/e/1FAIpQLSfLEaapoXvPycael0iLXQ-4J2bLrJpnBH3xfhfv65sXnBpCCQ/viewform', 1),
 (12, 'Special Needs', 'komunitas10.png', 'Anda dapat berbagi pengalaman, mencari saran dari ahli, dan menemukan strategi efektif untuk mendukung perkembangan anak Anda. Komunitas ini bertujuan untuk menciptakan lingkungan yang inklusif dan empati, di mana setiap orang tua merasa diterima dan didukung dalam perjalanannya.', 'https://docs.google.com/forms/d/e/1FAIpQLSfLEaapoXvPycael0iLXQ-4J2bLrJpnBH3xfhfv65sXnBpCCQ/viewform', 1),
 (13, 'Mental Health si Kecil', 'komunitas11.png', 'Mendukung orang tua dalam menjaga kesehatan mental anak-anak mereka. Di sini, Anda akan menemukan informasi penting, tips praktis, dan dukungan dari para ahli tentang cara mengenali dan mengatasi masalah kesehatan mental pada anak.', 'https://docs.google.com/forms/d/e/1FAIpQLSfLEaapoXvPycael0iLXQ-4J2bLrJpnBH3xfhfv65sXnBpCCQ/viewform', 1),
-(14, 'Curhatan Hati Orang Tua', 'komunitas12.png', 'Disini, Anda bisa menceritakan pengalaman, tantangan, dan kebahagiaan Anda dalam menjalani peran sebagai orang tua. Dengan saling mendengarkan dan berbagi, kita dapat menemukan kekuatan dan inspirasi untuk menghadapi berbagai situasi.', 'https://docs.google.com/forms/d/e/1FAIpQLSfLEaapoXvPycael0iLXQ-4J2bLrJpnBH3xfhfv65sXnBpCCQ/viewform', 1);
+(28, 'Curhatan Hati Orang Tua', 'foto-1718264410013.png', 'Disini, Anda bisa menceritakan pengalaman, tantangan, dan kebahagiaan Anda dalam menjalani peran sebagai orang tua. Dengan saling mendengarkan dan berbagi, kita dapat menemukan kekuatan dan inspirasi untuk menghadapi berbagai situasi.', 'https://docs.google.com/forms/d/e/1FAIpQLSfLEaapoXvPycael0iLXQ-4J2bLrJpnBH3xfhfv65sXnBpCCQ/viewform', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mitra`
+-- Struktur dari tabel `mitra`
 --
 
 CREATE TABLE `mitra` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `logo` text NOT NULL,
-  `kontak` text NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `mitra`
+-- Dumping data untuk tabel `mitra`
 --
 
-INSERT INTO `mitra` (`id`, `nama`, `logo`, `kontak`, `admin_id`) VALUES
-(29, 'KARYA Kreatif GURU Paud', 'karya-kreatif-guru-paud.png', 'https:', 1),
-(74, 'Guru SD.id', 'mitra2.png', '09102901', 1);
+INSERT INTO `mitra` (`id`, `nama`, `logo`, `deskripsi`, `admin_id`) VALUES
+(29, 'KARYA Kreatif GURU Paud', 'mitra1.png', 'Menyediakan video belajar dan lembar mewarnai pada Kidspedia', 1),
+(74, 'Guru SD.id', 'mitra2.png', 'Menyediakan video belajar yang ditaruh di bagian Kidspedia pada Kidspedia.', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `webinar`
+-- Struktur dari tabel `webinar`
 --
 
 CREATE TABLE `webinar` (
@@ -215,48 +215,48 @@ CREATE TABLE `webinar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `webinar`
+-- Dumping data untuk tabel `webinar`
 --
 
 INSERT INTO `webinar` (`id`, `judul`, `foto`, `deskripsi`, `narasumber`, `tanggal`, `waktu`, `harga`, `link_daftar`, `admin_id`) VALUES
-(6, 'Pengaruh Pendidikan Terhadap Parenting', 'webinar1.png', 'Webinar ini akan membahas terkait bagaimana tingkat pendidikan orang tua dapat mempengaruhi gaya pengasuhan anak mereka. Pada webinar ini akan menjelaskan bagaimana pendidikan dapat membekali orang tua dengan pengetahuan dan keterampilan yang mereka butuh', 'Dr. Putra Santoso M.Psi. Psikolog', '2024-06-17', '22:50:00', '30000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
-(7, 'Peran Orang Tua untuk Masa Depan Anak', 'webinar2.png', 'Semua orang tua ingin memberikan yang terbaik untuk masa depan anak-anak mereka. Namun, peran kita tidak selalu mudah dan sering kali penuh tantangan. Webinar \"Peran Ortu untuk Masa Depan Anaknya\" bertujuan untuk membantu para orang tua memahami tanggung ', 'Dr. Ratna Sariwati M.Psi. Psikolog', '2024-06-22', '14:00:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
-(8, 'Menerapkan Parenting Modern pada Era Digital untuk Anak Anda', 'webinar3.png', 'Membesarkan anak di era digital menghadirkan tantangan dan peluang unik bagi orang tua. Di satu sisi, teknologi menawarkan banyak sekali sumber daya dan alat yang dapat membantu kita dalam membesarkan anak. Webinar ini bertujuan untuk membantu orang tua y', 'Dr. Dalton Marty.S.Psi.Psikolog', '2024-06-23', '16:00:00', '50000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
-(9, 'Strategi Parenting Efektif untuk New Born', 'webinar4.png', 'Dapatkan panduan praktis dari para ahli tentang pemberian ASI, teknik menenangkan bayi, perawatan kesehatan dasar, dan stimulasi perkembangan. Sesi ini akan membantu Anda memahami kebutuhan penting bayi baru lahir dan membangun rutinitas yang sehat. ', 'Dr. Antoni Marty.S.Psi.Psikolog ', '2024-06-25', '10:30:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
-(10, 'Cegah Stunting : Menerapkan Asupan Gizi yang Tepat untuk Anak', 'webinar5.png', 'Dalam sesi ini, para ahli gizi akan membahas pentingnya nutrisi seimbang, memberikan panduan praktis tentang makanan yang mendukung perkembangan anak, serta strategi pencegahan stunting sejak dini.', 'Dr. Na kang Lim.S.Psi.Psikolog', '2024-06-26', '11:30:00', '25000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
-(11, 'Ayah dan Anak : Tips Parenting yang Efektif untuk Anak', 'webinar6.png', 'Berbagi tips praktis dalam membangun komunikasi yang baik, peran ayah dalam mendukung perkembangan emosional anak, serta cara-cara untuk terlibat aktif dalam kehidupan sehari-hari anak', 'Dr. Kratos Tatew.S.Psi.Psikolog ', '2024-06-27', '14:30:00', '30000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
-(12, 'Menjaga kesehatan mental anak maupun ortu', 'webinar7.png', 'Menghadapi tekanan hidup sehari-hari bisa mempengaruhi kesehatan mental kita dan anak-anak kita. Webinar ini menawarkan solusi praktis untuk menjaga kesejahteraan mental dan mengelola stress. Kami akan memberikan tips bagaimana orang tua bisa mendukung ke', ' Dr. Dalton Marty.S.Psi.Psikolog', '2024-06-28', '10:30:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
-(13, 'Strategi penanggulangan stunning dan bullying pada anak', 'webinar8.png', 'Stunting dan bullying adalah masalah yang memerlukan perhatian serius dari orang tua dan pendidik. Webinar ini memberikan panduan praktis tentang bagaimana mencegah atau mengatasi stunting melalui pola makan dan kesehatan yang baik, serta strategi untuk m', 'Dr. Ratna Sariwati M.Psi. Psikolog', '2024-06-29', '09:30:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
-(14, 'Menjalin keakraban dengan anak semasa sebagai teman', 'webinar9.png', 'Hubungan yang dekat dengan anak remaja sangat penting untuk perkembangan mereka. Dengan mengikuti kegiatan ini, Anda akan mendapatkan panduan tentang cara menjalin keakraban dengan anak remaja melalui komunikasi yang efektif dan empati. Para ahli akan ber', 'Dr. Putra Santoso M.Psi. Psikolog', '2024-07-01', '14:45:00', '30000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
-(15, 'Kesabaran dalam mendidik anak', 'webinar10.png', 'Mengasuh anak bisa menjadi tugas yang menantang dan sering kali menguji kesabaran orang tua. Kami akan memberikan tips dan strategi untuk menjaga kesabaran serta bagaimana cara berkomunikasi yang efektif dengan anak. Orang tua akan belajar bagaimana menja', 'Dr. Raka Setiawan S.Psi. Psikolog', '2024-07-02', '23:30:00', '20000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
-(16, 'Pulihkan luka, wariskan cinta', 'webinar11.png', 'Studi menunjukkan bahwa luka pengasuhan dapat \"diwariskan\" dari generasi ke generasi. Karena inilah kekuatan alam bawah sadar, ini dapat bertahan selama bertahun-tahun. Orang tua kita mungkin juga mengalami kerusakan yang disebabkan oleh pola asuh yang me', 'Dr. Jordan Smith  M.Psi. Psikolog', '2024-07-04', '10:00:00', '20000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
-(17, 'Perkembangan Anak Kebutuhan Khusus', 'webinar12.png', 'Berbagai aspek perkembangan, termasuk intervensi dini, pendidikan inklusif, dan cara membangun lingkungan yang mendukung. Webinar ini juga menyediakan tips praktis bagi orang tua dalam menghadapi tantangan sehari-hari dan mengoptimalkan potensi anak. ', ' Dr. Jonathan Joestar M.Psi. Psikolog', '2024-07-05', '14:00:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1);
+(6, 'Pengaruh Pendidikan Terhadap Parenting', 'foto-1718458403221.png', 'Webinar ini akan membahas terkait bagaimana tingkat pendidikan orang tua dapat mempengaruhi gaya pengasuhan anak mereka. Pada webinar ini akan menjelaskan bagaimana pendidikan dapat membekali orang tua dengan pengetahuan dan keterampilan yang mereka butuh', 'Dr. Putra Santoso M.Psi. Psikolog', '2024-06-17', '22:50:00', '30000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
+(7, 'Peran Orang Tua untuk Masa Depan Anak', 'foto-1718458425481.png', 'Semua orang tua ingin memberikan yang terbaik untuk masa depan anak-anak mereka. Namun, peran kita tidak selalu mudah dan sering kali penuh tantangan. Webinar \"Peran Ortu untuk Masa Depan Anaknya\" bertujuan untuk membantu para orang tua memahami tanggung ', 'Dr. Ratna Sariwati M.Psi. Psikolog', '2024-06-22', '14:00:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
+(8, 'Menerapkan Parenting Modern pada Era Digital untuk Anak Anda', 'foto-1718458442216.png', 'Membesarkan anak di era digital menghadirkan tantangan dan peluang unik bagi orang tua. Di satu sisi, teknologi menawarkan banyak sekali sumber daya dan alat yang dapat membantu kita dalam membesarkan anak. Webinar ini bertujuan untuk membantu orang tua y', 'Dr. Dalton Marty.S.Psi.Psikolog', '2024-06-23', '16:00:00', '50000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
+(9, 'Strategi Parenting Efektif untuk New Born', 'foto-1718458476230.png', 'Dapatkan panduan praktis dari para ahli tentang pemberian ASI, teknik menenangkan bayi, perawatan kesehatan dasar, dan stimulasi perkembangan. Sesi ini akan membantu Anda memahami kebutuhan penting bayi baru lahir dan membangun rutinitas yang sehat. ', 'Dr. Antoni Marty.S.Psi.Psikolog ', '2024-06-25', '10:30:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform?usp=sharing', 1),
+(10, 'Cegah Stunting : Menerapkan Asupan Gizi yang Tepat untuk Anak', 'foto-1718458495471.png', 'Dalam sesi ini, para ahli gizi akan membahas pentingnya nutrisi seimbang, memberikan panduan praktis tentang makanan yang mendukung perkembangan anak, serta strategi pencegahan stunting sejak dini.', 'Dr. Na kang Lim.S.Psi.Psikolog', '2024-06-26', '11:30:00', '25000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
+(11, 'Ayah dan Anak : Tips Parenting yang Efektif untuk Anak', 'foto-1718458572176.png', 'Berbagi tips praktis dalam membangun komunikasi yang baik, peran ayah dalam mendukung perkembangan emosional anak, serta cara-cara untuk terlibat aktif dalam kehidupan sehari-hari anak', 'Dr. Kratos Tatew.S.Psi.Psikolog ', '2024-06-27', '14:30:00', '30000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
+(12, 'Menjaga kesehatan mental anak maupun ortu', 'foto-1718458611211.png', 'Menghadapi tekanan hidup sehari-hari bisa mempengaruhi kesehatan mental kita dan anak-anak kita. Webinar ini menawarkan solusi praktis untuk menjaga kesejahteraan mental dan mengelola stress. Kami akan memberikan tips bagaimana orang tua bisa mendukung ke', ' Dr. Dalton Marty.S.Psi.Psikolog', '2024-06-28', '10:30:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
+(13, 'Strategi penanggulangan stunning dan bullying pada anak', 'foto-1718458648304.png', 'Stunting dan bullying adalah masalah yang memerlukan perhatian serius dari orang tua dan pendidik. Webinar ini memberikan panduan praktis tentang bagaimana mencegah atau mengatasi stunting melalui pola makan dan kesehatan yang baik, serta strategi untuk m', 'Dr. Ratna Sariwati M.Psi. Psikolog', '2024-06-29', '09:30:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
+(14, 'Menjalin keakraban dengan anak semasa sebagai teman', 'foto-1718458671135.png', 'Hubungan yang dekat dengan anak remaja sangat penting untuk perkembangan mereka. Dengan mengikuti kegiatan ini, Anda akan mendapatkan panduan tentang cara menjalin keakraban dengan anak remaja melalui komunikasi yang efektif dan empati. Para ahli akan ber', 'Dr. Putra Santoso M.Psi. Psikolog', '2024-07-01', '14:45:00', '30000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
+(15, 'Kesabaran dalam mendidik anak', 'foto-1718458687509.png', 'Mengasuh anak bisa menjadi tugas yang menantang dan sering kali menguji kesabaran orang tua. Kami akan memberikan tips dan strategi untuk menjaga kesabaran serta bagaimana cara berkomunikasi yang efektif dengan anak. Orang tua akan belajar bagaimana menja', 'Dr. Raka Setiawan S.Psi. Psikolog', '2024-07-02', '23:30:00', '20000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
+(16, 'Pulihkan luka, wariskan cinta', 'foto-1718458704932.png', 'Studi menunjukkan bahwa luka pengasuhan dapat \"diwariskan\" dari generasi ke generasi. Karena inilah kekuatan alam bawah sadar, ini dapat bertahan selama bertahun-tahun. Orang tua kita mungkin juga mengalami kerusakan yang disebabkan oleh pola asuh yang me', 'Dr. Jordan Smith  M.Psi. Psikolog', '2024-07-04', '10:00:00', '20000', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1),
+(17, 'Perkembangan Anak Kebutuhan Khusus', 'foto-1718458725911.png', 'Berbagai aspek perkembangan, termasuk intervensi dini, pendidikan inklusif, dan cara membangun lingkungan yang mendukung. Webinar ini juga menyediakan tips praktis bagi orang tua dalam menghadapi tantangan sehari-hari dan mengoptimalkan potensi anak. ', ' Dr. Jonathan Joestar M.Psi. Psikolog', '2024-07-05', '14:00:00', 'Gratis', 'https://docs.google.com/forms/d/e/1FAIpQLSeEBJo8azqIMyLfP1siFcbe24iSCb2Yd7IMRlg5Zvyo157bJw/viewform', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `artikel`
+-- Indeks untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_id_artikel_fk` (`admin_id`);
 
 --
--- Indexes for table `kategori_kidspedia`
+-- Indeks untuk tabel `kategori_kidspedia`
 --
 ALTER TABLE `kategori_kidspedia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kidspedia`
+-- Indeks untuk tabel `kidspedia`
 --
 ALTER TABLE `kidspedia`
   ADD PRIMARY KEY (`id`),
@@ -264,103 +264,103 @@ ALTER TABLE `kidspedia`
   ADD KEY `kategori_id_fk` (`kategori_id`);
 
 --
--- Indexes for table `komunitas`
+-- Indeks untuk tabel `komunitas`
 --
 ALTER TABLE `komunitas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_id_komunitas_fk` (`admin_id`);
 
 --
--- Indexes for table `mitra`
+-- Indeks untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_mitra_id_fk` (`admin_id`);
 
 --
--- Indexes for table `webinar`
+-- Indeks untuk tabel `webinar`
 --
 ALTER TABLE `webinar`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_id_webinar_fk` (`admin_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `artikel`
+-- AUTO_INCREMENT untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `kategori_kidspedia`
+-- AUTO_INCREMENT untuk tabel `kategori_kidspedia`
 --
 ALTER TABLE `kategori_kidspedia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kidspedia`
+-- AUTO_INCREMENT untuk tabel `kidspedia`
 --
 ALTER TABLE `kidspedia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `komunitas`
+-- AUTO_INCREMENT untuk tabel `komunitas`
 --
 ALTER TABLE `komunitas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `mitra`
+-- AUTO_INCREMENT untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT for table `webinar`
+-- AUTO_INCREMENT untuk tabel `webinar`
 --
 ALTER TABLE `webinar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `artikel`
+-- Ketidakleluasaan untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   ADD CONSTRAINT `admin_id_artikel_fk` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`);
 
 --
--- Constraints for table `kidspedia`
+-- Ketidakleluasaan untuk tabel `kidspedia`
 --
 ALTER TABLE `kidspedia`
   ADD CONSTRAINT `admin_id_kidspedia_fk` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`),
   ADD CONSTRAINT `kategori_id_fk` FOREIGN KEY (`kategori_id`) REFERENCES `kategori_kidspedia` (`id`);
 
 --
--- Constraints for table `komunitas`
+-- Ketidakleluasaan untuk tabel `komunitas`
 --
 ALTER TABLE `komunitas`
   ADD CONSTRAINT `admin_id_komunitas_fk` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`);
 
 --
--- Constraints for table `mitra`
+-- Ketidakleluasaan untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
   ADD CONSTRAINT `admin_mitra_id_fk` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`);
 
 --
--- Constraints for table `webinar`
+-- Ketidakleluasaan untuk tabel `webinar`
 --
 ALTER TABLE `webinar`
   ADD CONSTRAINT `admin_id_webinar_fk` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`);
