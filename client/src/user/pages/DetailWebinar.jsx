@@ -5,20 +5,15 @@ import CardWebinar from "../components/CardWebinar";
 import axios from "axios";
 import moment from "moment";
 
-// Fungsi untuk memeriksa dan memformat harga
-const formatPrice = (price) => {
-  // Coba konversi harga menjadi angka
-  const numericPrice = parseFloat(price);
 
-  // Periksa apakah konversi berhasil (tidak menghasilkan NaN)
+const formatPrice = (price) => {
+  const numericPrice = parseFloat(price);
   if (!isNaN(numericPrice)) {
-    // Jika harga adalah angka, format sebagai Rupiah
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
     }).format(numericPrice);
   } else {
-    // Jika harga adalah teks, tampilkan teks tersebut
     return price;
   }
 };
@@ -78,37 +73,26 @@ function DetailWebinar() {
 
   return (
     <LayoutUser>
-      {/* Konten detail webinar */}
       <div className="w-full mt-5 sm:px-8 py-10 flex flex-col items-center gap-12">
-        {/* Detail webinar */}
         <div className="flex flex-col md:flex-row items-center px-8">
-          {/* Gambar webinar */}
           <div className="w-full md:w-1/3 mb-4 md:mb-0">
             <img src={`http://localhost:3001/uploads/${webinar.foto}`} alt={webinar.judul} className="w-full h-auto rounded-xl" />
           </div>
-          {/* Informasi webinar */}
           <div className="w-full md:w-2/3 md:px-24 space-y-4 md:space-y-8 font-primary">
-            {/* Judul webinar */}
             <h2 className="text-2xl md:text-4xl font-bold">{webinar.judul}</h2>
-            {/* Deskripsi webinar */}
             <p className="text-gray-700 text-xs md:text-sm">{webinar.deskripsi}</p>
-            {/* Penyelenggara webinar */}
             <h3 className="text-sm font-medium">
               Penyelenggara: <span className="text-sm font-normal">{webinar.narasumber}</span>
             </h3>
-            {/* Tanggal webinar */}
             <h3 className="text-sm font-medium">
               Tanggal: <span className="text-sm font-normal">{moment(webinar.tanggal).format("DD MMMM YYYY")}</span>
             </h3>
-            {/* Waktu webinar */}
             <h3 className="text-sm font-medium">
               Pukul: <span className="text-sm font-normal">{moment(webinar.waktu, "HH:mm").format("HH:mm")}</span>
             </h3>
-            {/* Harga webinar */}
             <h3 className="text-sm font-medium">
               Harga: <span className="text-sm font-normal">{formatPrice(webinar.harga)}</span>
             </h3>
-            {/* Tombol daftar */}
             <button
               className="w-full inline-flex items-center justify-center md:w-auto md:px-5 py-3 font-primary text-sm font-medium bg-sky-700 rounded-lg md:rounded-xl shadow border-2 text-white hover:bg-sky-900"
               type="button"
@@ -124,7 +108,6 @@ function DetailWebinar() {
           </div>
         </div>
 
-        {/* Webinar lainnya */}
         <div className="py-8">
           <div className="flex flex-row justify-between mb-10 text-center sm:text-left items-center">
             <h1 className="lg:text-3xl text-2xl font-primary font-semibold ">Webinar Lainnya</h1>
@@ -141,7 +124,6 @@ function DetailWebinar() {
               </Link>
             </button>
           </div>
-          {/* Daftar webinar lainnya */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8">
             {displayedWebinars.map((webinar) => (
               <Link key={webinar.id} to={`/sharenting-webinar/${webinar.id}`} className="px-2">

@@ -7,20 +7,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 
-// Fungsi untuk memeriksa dan memformat harga
 const formatPrice = (price) => {
-  // Coba konversi harga menjadi angka
   const numericPrice = parseFloat(price);
 
-  // Periksa apakah konversi berhasil (tidak menghasilkan NaN)
   if (!isNaN(numericPrice)) {
-    // Jika harga adalah angka, format sebagai Rupiah
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
     }).format(numericPrice);
   } else {
-    // Jika harga adalah teks, tampilkan teks tersebut
     return price;
   }
 };

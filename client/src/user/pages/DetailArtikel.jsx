@@ -78,7 +78,7 @@ function DetailArtikel() {
     fetchArticles();
 
     return () => {
-      window.scrollTo(0, 0); // Reset scroll ke atas setiap kali komponen unmount
+      window.scrollTo(0, 0);
     };
   }, [id]);
 
@@ -94,12 +94,9 @@ function DetailArtikel() {
     return <div>Artikel tidak ditemukan</div>;
   }
 
-  // Tampilkan data artikel
   return (
     <LayoutUser>
-      {/* Konten artikel */}
       <div className="w-full px-5 mt-5 sm:px-8 py-10 flex flex-col items-center gap-12">
-        {/* Judul dan informasi artikel */}
         <RevealAnimation>
           <div className="w-full max-w-[1290px] rounded-[25px] flex flex-col gap-3">
             <div className="text-neutral-700 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-primary leading-20">{article.judul}</div>
@@ -108,9 +105,7 @@ function DetailArtikel() {
             </div>
           </div>
         </RevealAnimation>
-        {/* Gambar artikel */}
         <RevealAnimation>{article.foto && <img className="w-full md:max-w-[1200px] md:h-[467px] rounded-[20px] object-cover" src={`http://localhost:3001/uploads/${article.foto}`} alt={article.judul} />}</RevealAnimation>
-        {/* Isi artikel */}
         <RevealAnimation>
           <div className="w-full max-w-[1290px] rounded-[25px] flex flex-col gap-6">
             <div className="text-neutral-700 rounded-[25px] p-6 bg-zinc-100 text-sm md:text-xl font-primary leading-9">
@@ -123,7 +118,6 @@ function DetailArtikel() {
           </div>
         </RevealAnimation>
       </div>
-      {/* Artikel lainnya */}
       <RevealAnimation>
         <div className="container py-8 max-w-screen-xl sm:py-16 lg:px-6 mb-8">
           <div className="flex flex-row justify-between mb-10 text-center sm:text-left">
@@ -135,7 +129,6 @@ function DetailArtikel() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-4">
-            {/* Menampilkan artikel lainnya */}
             {shuffle(displayedArticles)
               .filter((a) => a.id !== parseInt(id))
               .slice(0, 3)

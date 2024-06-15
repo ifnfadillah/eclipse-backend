@@ -5,7 +5,7 @@ import axios from "axios";
 import moment from "moment";
 
 function DetailArtikel() {
-  const { id } = useParams(); // Mengambil ID artikel dari URL
+  const { id } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,7 +38,7 @@ function DetailArtikel() {
     fetchArticles();
 
     return () => {
-      window.scrollTo(0, 0); // Reset scroll ke atas setiap kali komponen unmount
+      window.scrollTo(0, 0);
     };
   }, [id]);
 
@@ -54,21 +54,20 @@ function DetailArtikel() {
     return <div>Artikel tidak ditemukan</div>;
   }
 
-  // Tampilkan data artikel
   return (
     <>
-      {/* Konten artikel */}
+
       <div className="w-full px-5 mt-5 sm:px-8 py-10 flex flex-col items-center gap-12">
-        {/* Judul dan informasi artikel */}
+
         <div className="w-full max-w-[1290px] rounded-[25px] flex flex-col gap-3">
           <div className="text-neutral-700 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-primary leading-20">{article.judul}</div>
           <div className="text-neutral-400 text-lg font-semibold font-primary">
             {moment(article.tanggal).format("DD MMMM YYYY")} - {article.author}
           </div>
         </div>
-        {/* Gambar artikel */}
+
         {article.foto && <img className="w-full md:max-w-[1200px] md:h-[467px] rounded-[20px] object-cover" src={`http://localhost:3001/uploads/${article.foto}`} alt={article.judul} />}
-        {/* Isi artikel */}
+
         <div className="w-full max-w-[1290px] rounded-[25px] flex flex-col gap-6">
           <div className="text-neutral-700 rounded-[25px] p-6 bg-zinc-100 text-sm md:text-xl font-primary leading-9">
             {article.isi.split('",').map((paragraph, index) => (
@@ -79,7 +78,7 @@ function DetailArtikel() {
           </div>
         </div>
       </div>
-      {/* Artikel lainnya */}
+
       <div className="container py-8 max-w-screen-xl sm:py-16 lg:px-6 mb-8">
         <div className="flex flex-row justify-between mb-10 text-center sm:text-left">
           <h1 className="text-3xl sm:text-4xl font-primary mb-3 font-semibold">Artikel Lainnya</h1>
@@ -90,13 +89,13 @@ function DetailArtikel() {
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-4">
-          {/* Menampilkan artikel lainnya */}
+
           {displayedArticles.map((article) => (
             <Link key={article.id} to={`/artikel/${article.id}`} className="mx-2">
               <CardArtikel
                 imageSrc={`http://localhost:3001/uploads/${article.foto}`}
                 title={article.judul}
-                description={article.isi} // Perhatikan bahwa ini mungkin perlu diubah sesuai dengan format yang diinginkan
+                description={article.isi}
                 date={moment(article.tanggal).format("DD MMMM YYYY")}
               />
             </Link>

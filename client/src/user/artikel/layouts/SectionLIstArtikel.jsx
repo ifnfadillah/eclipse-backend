@@ -73,7 +73,7 @@ function ArtikelList() {
             <CardArtikel
               imageSrc={`http://localhost:3001/uploads/${article.foto}`}
               title={article.judul}
-              description={article.isi} // Perhatikan bahwa ini mungkin perlu diubah sesuai dengan format yang diinginkan
+              description={article.isi}
               date={moment(article.tanggal).format("DD MMMM YYYY")}
             />
           </Link>

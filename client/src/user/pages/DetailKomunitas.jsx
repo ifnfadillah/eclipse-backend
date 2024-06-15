@@ -38,8 +38,8 @@ function DetailKomunitas() {
   }, [id]);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll ke atas setiap kali komponen di-render
-  }); // Tidak ada dependensi, jadi hanya terjadi saat pertama kali komponen di-mount
+    window.scrollTo(0, 0);
+  });
 
   if (!community) {
     return <div>Komunitas tidak ditemukan</div>;
@@ -47,7 +47,6 @@ function DetailKomunitas() {
 
   return (
     <LayoutUser>
-      {/* Tampilkan data komunitas */}
       <div className="w-full mt-5 sm:px-8 py-10 flex flex-col items-center gap-12">
         <div className="flex flex-col md:flex-row items-center px-8">
           <div className="w-full md:w-1/3 mb-4 md:mb-0">
@@ -72,7 +71,6 @@ function DetailKomunitas() {
         </div>
       </div>
 
-      {/* Tampilkan komunitas lainnya */}
       <div className="container max-w-screen-xl sm:py-8">
         <div className="flex flex-row justify-between mb-10 text-center sm:text-left items-center">
           <h1 className="lg:text-3xl text-2xl font-primary font-semibold ">Komunitas Lainnya</h1>

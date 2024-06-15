@@ -53,8 +53,8 @@ const DetailGaya = () => {
     </div>
   );
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll ke atas setiap kali komponen di-render
-  }); // Tidak ada dependensi, jadi hanya terjadi saat pertama kali komponen di-mount
+    window.scrollTo(0, 0);
+  });
 
   const { id } = useParams();
 

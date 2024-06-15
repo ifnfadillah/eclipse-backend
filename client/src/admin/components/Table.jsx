@@ -5,7 +5,6 @@ import Pagination from "./Pagination";
 import { Link } from 'react-router-dom';
 
 const Table = ({ headers, data, setData }) => {
-    // Pop Up Dialog Hapus
     const [isOpen, setIsOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
 
