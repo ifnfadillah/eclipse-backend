@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import SectionCTA from "../../components/CTA/SectionCTA";
 
 const CTAHome = () => {
