@@ -44,7 +44,7 @@ const RevealAnimation = ({ children }) => (
   </div>
 );
 
-function Sharenting() {
+function sharenting() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -65,4 +65,4 @@ function Sharenting() {
   );
 }
 
-export default Sharenting;
+export default sharenting;
