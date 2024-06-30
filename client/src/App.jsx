@@ -22,8 +22,8 @@ import EditArtikel from "./admin/artikel/layout/EditArtikel";
 
 // user
 import HomeUser from "./user/pages/HomeUser";
-import kidspedia from "./user/pages/kidspedia";
-import sharenting from "./user/pages/sharenting";
+import Kidspedia from "./user/pages/kidspedia";
+import Sharenting from "./user/pages/sharenting";
 import Webinar from "./user/pages/listWebinar";
 import PanduanAsuh from "./user/pages/panduanasuh";
 import Komunitas from "./user/pages/listKomunitas";
@@ -49,8 +49,8 @@ function App() {
   return (
     <Routes>
       <Route index path="/" element={<HomeUser />} />
-      <Route path="/kidspedia" element={<kidspedia />} />
-      <Route path="/sharenting" element={<sharenting />} />
+      <Route path="/kidspedia" element={<Kidspedia />} />
+      <Route path="/sharenting" element={<Sharenting />} />
       <Route path="/sharenting-webinar" element={<Webinar />} />
       <Route path="/sharenting-webinar/:id" element={<DetailWebinar />} />
       <Route path="/sharenting-komunitas" element={<Komunitas />} />

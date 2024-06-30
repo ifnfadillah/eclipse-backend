@@ -44,7 +44,7 @@ const RevealAnimation = ({ children }) => (
   </div>
 );
 
-function kidspedia() {
+function Kidspedia() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -65,4 +65,4 @@ function kidspedia() {
   );
 }
 
-export default kidspedia;
+export default Kidspedia;
